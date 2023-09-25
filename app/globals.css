@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .borderStyle {
+    @apply border-tetiaryColor border-opacity-40;
+  }
+
+  .headingText {
+    @apply capitalize sm:text-[3.3rem] sm:leading-[4rem] text-[2.6rem] leading-[2.6rem] mb-7 sm:mb-4 font-medium text-white
+  }
+}
+
+

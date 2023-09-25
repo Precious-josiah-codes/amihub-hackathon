@@ -4,7 +4,7 @@ import { animationOne } from "../animation";
 
 const ProductImageTwo = () => {
   return (
-    <section className="flex mt-20">
+    <section className="flex sm:mt-10 mt-0">
       <div className="mx-auto flex sm:flex-row flex-col sm:space-x-6 space-y-6 sm:space-y-0 w-fit">
         {/* first image */}
         <motion.div
@@ -15,7 +15,7 @@ const ProductImageTwo = () => {
           className="flex flex-col items-center justify-center px-4 sm:px-40"
         >
           <div className="text-left">
-            <h1 className="text-4xl text-left mb-4 text-golden">
+            <h1 className="sm:text-4xl text-2xl text-left mb-4 text-golden">
               The 3 Phases of Sci-Tech Hackathon 2023
             </h1>
             <ul className="list-disc space-y-4">
@@ -48,12 +48,14 @@ const ProductImageTwo = () => {
             </ul>
             <br />
             <br />
-            <p className="text-center">
+            <hr className="mb-5" />
+            <p className="text-center sm:text-left">
               <span className="text-golden">NOTE: </span> Teams from all
               tertiary institution in Rivers State can apply for this Sci-Tech
               Hackathon. Teams must publicize the hackathon across all social
               media platforms
             </p>
+            <hr className="mt-5" />
           </div>
         </motion.div>
       </div>

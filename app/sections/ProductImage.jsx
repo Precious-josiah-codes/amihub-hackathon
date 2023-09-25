@@ -12,11 +12,13 @@ const ProductImage = () => {
           variants={animationOne}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="flex flex-col items-center justify-center px-0 sm:px-40"
         >
-          <div className="text-justify">
-            <h1 className="text-4xl text-center text-golden">INTRODUCTION</h1>
+          <div className="sm:text-justify text-left">
+            <h1 className="sm:text-4xl text-2xl text-center text-golden">
+              INTRODUCTION
+            </h1>
             The SCI-TECH 2023 Hackathon is an event organized by the Africa
             Manufacturing Innovation Hub, designed to inspire, challenge, and
             empower students from tertiary institutions across the South-South
@@ -43,8 +45,8 @@ const ProductImage = () => {
               variants={animationFour}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
-              className="h-[10rem] w-full rounded-[5px] relative overflow-hidden mt-9"
+              viewport={{ once: false }}
+              className="h-[10rem] w-full rounded-[5px] relative overflow-hidden mt-0 sm:mt-9"
             >
               <Image
                 class="object-contain w-full h-full rounded-3xl"
@@ -55,7 +57,9 @@ const ProductImage = () => {
               />
             </motion.div>
           </div>
+          <hr className="w-0 sm:w-full" />
         </motion.div>
+        <hr className="w-full sm:w-0" />
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ const Navbar = () => {
       className={`fixed z-50 right-0 w-full h-[5rem] px-6 sm:px-[4rem] flex items-center backdrop-blur-lg justify-between text-white border-b borderStyle text-sm`}
     >
       {/* logo */}
-      <div className="sm:h-[22rem] sm:w-[14rem] h-[19rem] w-[4rem] relative">
+      <div className="sm:h-[22rem] sm:w-[14rem] h-[19rem] w-[10rem] relative">
         <Image
           class="object-contain w-full h-full"
           src={navBar.newlogo}

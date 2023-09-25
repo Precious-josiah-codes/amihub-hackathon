@@ -37,14 +37,14 @@ export default function Home() {
         <ProductImageTwo />
         {/* end product features */}
 
+        {/* start software */}
+        <ProductImageThree />
+        {/* end software */}
+
         {/* start incubated section */}
         <Incubated />
         {/* end incubated section */}
       </div>
-
-      {/* start software */}
-      <ProductImageThree />
-      {/* end software */}
 
       {/* start footer */}
       <Footer />

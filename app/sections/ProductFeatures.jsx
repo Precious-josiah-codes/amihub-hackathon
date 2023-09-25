@@ -13,15 +13,15 @@ import {
 const ProductFeatures = () => {
   const { features } = content;
   return (
-    <section className="mx-auto flex sm:px-5 pt-[10rem] pb-[3.5rem] items-center justify-center flex-col  text-center">
+    <section className="mx-auto flex sm:px-5 pt-20 sm:pt-[10rem] pb-[3.5rem] items-center justify-center flex-col  text-center">
       {/* title and subtitle */}
       <div className="sm:w-2/3">
         <motion.h1
-          className="headingText"
+          className="sm:headingText text-2xl text-golden"
           variants={animationOne}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           {features.title}
         </motion.h1>
@@ -30,7 +30,7 @@ const ProductFeatures = () => {
           variants={animationTwo}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           {features.subtitle}
         </motion.p>
@@ -57,7 +57,7 @@ const ProductFeatures = () => {
           variants={animationThree}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           {features.cards.map(({ title, subtitle }, index) => (
             <FeaturesCard title={title} subtitle={subtitle} key={index} />
@@ -69,8 +69,8 @@ const ProductFeatures = () => {
           variants={animationFour}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="h-[10rem] w-full rounded-[5px] relative overflow-hidden mt-9"
+          viewport={{ once: false }}
+          className="h-[10rem] w-full rounded-[5px] relative overflow-hidden mt-0 sm:mt-9"
         >
           <Image
             class="object-contain w-full h-full rounded-3xl"
@@ -80,6 +80,7 @@ const ProductFeatures = () => {
             priority
           />
         </motion.div>
+        <hr className="mt-2" />
       </div>
     </section>
   );

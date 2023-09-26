@@ -402,6 +402,7 @@ export const RegistrationForm = () => {
   return (
     <div className="w-full">
       <Form
+        size="large"
         className="w-full space-y-4"
         scrollToFirstError
         name="amihub_hackathon_registration_form"
@@ -435,7 +436,7 @@ export const RegistrationForm = () => {
         </div>
         <div>
           <p className="text-white">
-            Names of Team members and their departments, and matric number
+            Names of team members, departments, and matric number
           </p>
           <Form.List
             className="w-full flex flex-col items-start justify-start"
@@ -453,12 +454,12 @@ export const RegistrationForm = () => {
                     label={`Member ${index + 1}`}
                     key={field.key}
                   >
-                    <div className="w-full flex flex-row">
+                    <div className="w-full flex gap-2 sm:flex-row flex-col">
                       <Form.Item
                         {...field}
-                        className="w-1/2"
-                        name={`team_member ${index + 1}`}
-                        id={`team_member ${index + 1}`}
+                        className="sm:w-1/2 w-full"
+                        name={[field.name, `team_member_${index + 1}`]}
+                        id={`team_member_${index + 1}`}
                         validateTrigger={["onChange", "onBlur"]}
                         rules={[
                           {
@@ -471,16 +472,14 @@ export const RegistrationForm = () => {
                       >
                         <Input
                           placeholder="Full Name"
-                          style={{
-                            width: "50%",
-                          }}
+                          className="w-full sm:w-1/2"
                         />
                       </Form.Item>
                       <Form.Item
                         {...field}
-                        className="w-1/2"
-                        name={`faculty ${index + 1}`}
-                        id={`faculty ${index + 1}`}
+                        className="sm:w-1/2 w-full"
+                        name={[field.name, `department_${index + 1}`]}
+                        id={`department_${index + 1}`}
                         validateTrigger={["onChange", "onBlur"]}
                         rules={[
                           {
@@ -493,16 +492,14 @@ export const RegistrationForm = () => {
                       >
                         <Input
                           placeholder="Department"
-                          style={{
-                            width: "50%",
-                          }}
+                          className="w-full sm:w-1/2"
                         />
                       </Form.Item>
                       <Form.Item
                         {...field}
-                        className="w-1/2"
-                        name={`matno ${index + 1}`}
-                        id={`matno ${index + 1}`}
+                        className="sm:w-1/2 w-full"
+                        name={[field.name, `matno_${index + 1}`]}
+                        id={`matno_${index + 1}`}
                         validateTrigger={["onChange", "onBlur"]}
                         rules={[
                           {
@@ -515,9 +512,7 @@ export const RegistrationForm = () => {
                       >
                         <Input
                           placeholder="Matric No"
-                          style={{
-                            width: "50%",
-                          }}
+                          className="w-full sm:w-1/2"
                         />
                       </Form.Item>
                     </div>
@@ -526,7 +521,7 @@ export const RegistrationForm = () => {
                         className="cursor-pointer"
                         onClick={() => remove(field.name)}
                       >
-                        Remove{" "}
+                        Remove team member{" "}
                         <MinusCircleOutlined className="dynamic-delete-button" />
                       </div>
                     ) : null}
@@ -580,7 +575,7 @@ export const RegistrationForm = () => {
         </div>
         <div>
           <p className="text-white">
-            Link to your 2 minutes video summaeizing your powerpoint document
+            Link to your 2 minutes video summarizing your powerpoint document
           </p>
           <Input placeholder={"Google drive link"} />
         </div>

@@ -398,7 +398,7 @@ export const RegistrationForm = () => {
           />
         </div>
         <div>
-          <p className="text-white">If you chose "Other"</p>
+          <p className="text-white">If you chose &quot;Other&quot;</p>
           <Input placeholder={"Name of your university"} />{" "}
         </div>
         <div>

@@ -25,14 +25,14 @@ const ProductImageTwo = () => {
                 </span>
                 Teams from various tertiary institutions in the South-South
                 region of Nigeria will apply for the SCI-TECH Hackathon 2023.
-                Their applications will be screened by experts and the top 24
+                Their applications will be screened by experts and the top 25
                 teams will be selected for the next stage.
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
                   Phase 2 -{" "}
                 </span>
-                The top 24 selected teams will be invited to present their
+                The top 25 selected teams will be invited to present their
                 project/ ideas in person, where experts will assess and review
                 their presentations based on set criteria of innovation and
                 viability. 10 teams will be selected for the finals.
@@ -41,9 +41,9 @@ const ProductImageTwo = () => {
                 <span className="font-bold text-left text-golden">
                   Phase 3 -{" "}
                 </span>
-                10 Teams will come to the nals with their project having gone
-                through an advisory process. The winners will be identied and
-                announced by the panel of judges.
+                10 Teams will come to the finals with their projects having gone
+                through mentorship and advisory processes. The winners will be
+                identified and announced by the panel of judges.
               </li>
             </ul>
             <br />
@@ -51,9 +51,11 @@ const ProductImageTwo = () => {
             <hr className="mb-5" />
             <p className="text-center sm:text-left">
               <span className="text-golden">NOTE: </span> Teams from all
-              tertiary institution in Rivers State can apply for this Sci-Tech
-              Hackathon. Teams must publicize the hackathon across all social
-              media platforms
+              tertiary institution in{" "}
+              <span className="text-golden">South-South Nigeria</span> can apply
+              for this <span className="text-golden">SCITECH23 Hackathon</span>.
+              Individual team members are encouraged to follow and like AMIHub
+              on all her social media platforms.
             </p>
             <hr className="mt-5" />
           </div>

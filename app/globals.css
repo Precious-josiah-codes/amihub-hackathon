@@ -2,15 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
   .borderStyle {
     @apply border-tetiaryColor border-opacity-40;
   }
 
   .headingText {
-    @apply capitalize sm:text-[3.3rem] sm:leading-[4rem] text-[2.6rem] leading-[2.6rem] mb-7 sm:mb-4 font-medium text-white
+    @apply capitalize sm:text-[3.3rem] sm:leading-[4rem] text-[2.6rem] leading-[2.6rem] mb-7 sm:mb-4 font-medium text-white;
   }
 }
 
+:where(.css-dev-only-do-not-override-1ck3jst).ant-form-item
+  .ant-form-item-label
+  > label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  height: 32px;
+  color: #ffffff;
+  font-size: 14px;
+}
 
+:where(.css-dev-only-do-not-override-1ck3jst).ant-input-textarea-show-count
+  .ant-input-data-count {
+  position: absolute;
+  bottom: -22px;
+  inset-inline-end: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  color: white;
+}

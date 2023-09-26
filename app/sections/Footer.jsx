@@ -90,22 +90,6 @@ const Footer = () => {
           </div>
 
           {/* left section */}
-          <div>
-            {/* company */}
-            <h1 className="mb-6 font-semibold">Company</h1>
-            <div className="space-y-3 font-extralight">
-              {/* about */}
-
-              <h1 className="flex space-x-3">
-                <Link href="https://amihubb.netlify.app/">About</Link>
-              </h1>
-
-              {/* products */}
-              <h1 className="flex space-x-3">
-                <Link href="https://amihubb.netlify.app/">Products </Link>
-              </h1>
-            </div>
-          </div>
         </div>
 
         <div

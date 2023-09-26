@@ -10,7 +10,7 @@ export const content = {
     btn: "Pre Order",
   },
   hero: {
-    subTextOne: "anticipate...",
+    subTextOne: "",
     mainText: "Discover The Power Of Accurate",
     lineText: "Gaz Metering.",
     subTextTwo: "Monday 9th October 2023 - Saturday 18th November 2023",
@@ -22,7 +22,7 @@ export const content = {
   features: {
     title: "Hardware, IoT, Embedded Systems, & Software Solutions",
     subtitle:
-      "Interested persons are to make an entry as a team of four (4), 25 Teams will be selected for this Sci-Tech hackathon that cut across the 5 categories below. 3 teams will be selected from each category",
+      "Interested persons are to make entries as a team of a maximum of four (4), 25 Teams will be selected for this SCITECH23 Hackathon that cut across the 5 categories below.",
     cards: [
       {
         title: "Oil & Gas Industry",
@@ -30,7 +30,7 @@ export const content = {
           "Innovate for a sustainable future in the Oil & Gas energy sector.",
       },
       {
-        title: "Telecommunication& Digital Communication Industry",
+        title: "Telecommunication & Digital Communication Industry",
         subtitle: "Revolutionize connectivity and communication technologies.",
       },
       {

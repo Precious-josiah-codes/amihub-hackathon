@@ -24,14 +24,6 @@ const Hero = () => {
         </div>
 
         {/* sub title text */}
-        <motion.h5
-          variants={animationOne}
-          initial="hidden"
-          animate="visible"
-          className={` sm:space-x-3 secondary-color mb-[3rem] text-[0.60rem] sm:text-sm uppercase bg-opacity-0 rounded-[5px] border borderStyle w-fit mx-auto px-6 py-3 text-tetiaryColor`}
-        >
-          {hero.subTextOne}
-        </motion.h5>
 
         {/* main text */}
         <motion.h1
@@ -51,11 +43,20 @@ const Hero = () => {
 
         {/* sub text */}
         <motion.p
-          class="leading-relaxed mb-8 text-[#ff9e03] text-xl font-bold"
+          class="leading-relaxed mb-8 text-[#ff9e03] text-xl flex flex-col items-center justify-center font-bold"
           variants={animationThree}
           initial="hidden"
           animate="visible"
         >
+          <Image
+            className="w-1/2 h-1/2"
+            src="/igniting.png"
+            alt="Hackathon"
+            width={1000}
+            height={1000}
+            priority
+          />
+          <br />
           {hero.subTextTwo}
         </motion.p>
       </div>

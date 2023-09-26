@@ -17,12 +17,13 @@ const ProductFeatures = () => {
       {/* title and subtitle */}
       <div className="sm:w-2/3">
         <motion.h1
-          className="sm:headingText text-2xl text-golden"
+          className="sm:headingText text-2xl"
           variants={animationOne}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false }}
         >
+          <p className="text-golden">Hackathon Focus</p>
           {features.title}
         </motion.h1>
         <motion.p
@@ -63,24 +64,6 @@ const ProductFeatures = () => {
             <FeaturesCard title={title} subtitle={subtitle} key={index} />
           ))}
         </motion.div>
-
-        {/* gaz image */}
-        <motion.div
-          variants={animationFour}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false }}
-          className="h-[10rem] w-full rounded-[5px] relative overflow-hidden mt-0 sm:mt-9"
-        >
-          <Image
-            class="object-contain w-full h-full rounded-3xl"
-            src="/igniting.png"
-            fill
-            alt=""
-            priority
-          />
-        </motion.div>
-        <hr className="mt-2" />
       </div>
     </section>
   );

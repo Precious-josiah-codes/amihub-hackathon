@@ -108,6 +108,10 @@ const schoolOptions = [
         "value": "institute_of_science_and_technology_yenagoa",
         "label": "Institute of Science and Technology Yenagoa",
       },
+      {
+        "value": "other",
+        "label": "other",
+      },
     ],
   },
   {
@@ -129,6 +133,10 @@ const schoolOptions = [
       {
         "value": "arthur_javis_university",
         "label": "Arthur Javis University",
+      },
+      {
+        "value": "other",
+        "label": "other",
       },
     ],
   },
@@ -212,6 +220,10 @@ const schoolOptions = [
         "value": "michael_and_cecilia_ibru_university",
         "label": "Michael and Cecilia Ibru University",
       },
+      {
+        "value": "other",
+        "label": "other",
+      },
     ],
   },
   {
@@ -282,6 +294,10 @@ const schoolOptions = [
         "value": "kings_polytechnic",
         "label": "Kings Polytechnic",
       },
+      {
+        "value": "other",
+        "label": "other",
+      },
     ],
   },
   {
@@ -331,6 +347,10 @@ const schoolOptions = [
       {
         "value": "eastern_polytechnic",
         "label": "Eastern Polytechnic",
+      },
+      {
+        "value": "other",
+        "label": "other",
       },
     ],
   },

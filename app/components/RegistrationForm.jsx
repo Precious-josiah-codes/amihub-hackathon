@@ -399,15 +399,11 @@ export const RegistrationForm = () => {
         </div>
         <div>
           <p className="text-white">If you chose &quot;Other&quot;</p>
-          <Input placeholder={"Name of your university"} />{" "}
-        </div>
-        <div>
-          <p className="text-white">Department</p>
           <Input
-            required
-            name="department"
-            placeholder={"e.g Department of Electrical Engineering"}
-          />
+            placeholder={
+              "Name of your university, and LGA. E.g: University of Port Harcourt, Obio/Akpor LGA"
+            }
+          />{" "}
         </div>
         <div>
           <p className="text-white">Team Tag</p>
@@ -419,7 +415,7 @@ export const RegistrationForm = () => {
         </div>
         <div>
           <p className="text-white">
-            Names of Team members and their faculties
+            Names of Team members and their departments, and matric number
           </p>
           <Form.List
             className="w-full flex flex-col items-start justify-start"
@@ -437,50 +433,74 @@ export const RegistrationForm = () => {
                     label={`Member ${index + 1}`}
                     key={field.key}
                   >
-                    <Form.Item
-                      {...field}
-                      className="w-1/2"
-                      name={`team_member ${index + 1}`}
-                      id={`team_member ${index + 1}`}
-                      validateTrigger={["onChange", "onBlur"]}
-                      rules={[
-                        {
-                          required: true,
-                          whitespace: true,
-                          message: "Please input team member's Name.",
-                        },
-                      ]}
-                      noStyle
-                    >
-                      <Input
-                        placeholder="Full Name"
-                        style={{
-                          width: "50%",
-                        }}
-                      />
-                    </Form.Item>
-                    <Form.Item
-                      {...field}
-                      className="w-1/2"
-                      name={`faculty ${index + 1}`}
-                      id={`faculty ${index + 1}`}
-                      validateTrigger={["onChange", "onBlur"]}
-                      rules={[
-                        {
-                          required: true,
-                          whitespace: true,
-                          message: "Please input team member's Faculty.",
-                        },
-                      ]}
-                      noStyle
-                    >
-                      <Input
-                        placeholder="Faculty"
-                        style={{
-                          width: "50%",
-                        }}
-                      />
-                    </Form.Item>
+                    <div className="w-full flex flex-row">
+                      <Form.Item
+                        {...field}
+                        className="w-1/2"
+                        name={`team_member ${index + 1}`}
+                        id={`team_member ${index + 1}`}
+                        validateTrigger={["onChange", "onBlur"]}
+                        rules={[
+                          {
+                            required: true,
+                            whitespace: true,
+                            message: "Please input team member's Name.",
+                          },
+                        ]}
+                        noStyle
+                      >
+                        <Input
+                          placeholder="Full Name"
+                          style={{
+                            width: "50%",
+                          }}
+                        />
+                      </Form.Item>
+                      <Form.Item
+                        {...field}
+                        className="w-1/2"
+                        name={`faculty ${index + 1}`}
+                        id={`faculty ${index + 1}`}
+                        validateTrigger={["onChange", "onBlur"]}
+                        rules={[
+                          {
+                            required: true,
+                            whitespace: true,
+                            message: "Please input team member's Faculty.",
+                          },
+                        ]}
+                        noStyle
+                      >
+                        <Input
+                          placeholder="Department"
+                          style={{
+                            width: "50%",
+                          }}
+                        />
+                      </Form.Item>
+                      <Form.Item
+                        {...field}
+                        className="w-1/2"
+                        name={`matno ${index + 1}`}
+                        id={`matno ${index + 1}`}
+                        validateTrigger={["onChange", "onBlur"]}
+                        rules={[
+                          {
+                            required: true,
+                            whitespace: true,
+                            message: "Please input team member's Matric No.",
+                          },
+                        ]}
+                        noStyle
+                      >
+                        <Input
+                          placeholder="Matric No"
+                          style={{
+                            width: "50%",
+                          }}
+                        />
+                      </Form.Item>
+                    </div>
                     {fields.length >= 1 ? (
                       <div
                         className="cursor-pointer"

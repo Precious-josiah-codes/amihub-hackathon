@@ -115,7 +115,7 @@ const ProductImageThree = () => {
                   Step 4 -{" "}
                 </span>
                 Download, fill and submit a google drive link to your powerpoint
-                document containing your problem and solution
+                document containing your problem statement and solution
                 <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
                   <a
                     href={"/line.png"}

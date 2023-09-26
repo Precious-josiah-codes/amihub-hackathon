@@ -43,13 +43,14 @@ const Hero = () => {
 
         {/* sub text */}
         <motion.p
-          class="leading-relaxed mb-8 text-[#ff9e03] text-xl flex flex-col items-center justify-center font-bold"
+          class="leading-relaxed mb-8 text-white flex flex-col items-center justify-center text-xl"
           variants={animationThree}
           initial="hidden"
           animate="visible"
         >
+          <p className="mt-12 font-bold text-xl text-[#ff9e03]">Theme</p>
           <Image
-            className="w-1/2 h-1/2"
+            className="w-2/3 h-2/3"
             src="/igniting.png"
             alt="Hackathon"
             width={1000}

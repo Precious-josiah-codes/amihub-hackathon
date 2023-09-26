@@ -22,7 +22,7 @@ export const content = {
   features: {
     title: "Hardware, IoT, Embedded Systems, & Software Solutions",
     subtitle:
-      "Interested persons are to make entries as a team of a maximum of four (4), 25 Teams will be selected for this SCITECH23 Hackathon that cut across the 5 categories below.",
+      "Interested persons are to make entries as a team of a maximum of four (4). Teams will be selected for this SCITECH23 Hackathon that cut across the 5 categories below.",
     cards: [
       {
         title: "Oil & Gas Industry",

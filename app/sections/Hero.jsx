@@ -17,7 +17,7 @@ const Hero = () => {
               class="object-cover w-full h-full"
               src="/Ellipse.png"
               fill
-              alt=""
+              alt="amihub hackathon 2023"
               priority
             />
           </div>
@@ -34,7 +34,7 @@ const Hero = () => {
         >
           <Image
             src="/hackaton.png"
-            alt="Hackathon"
+            alt="amihub hackathon 2023 for south-south tetiary institutions"
             width={1000}
             height={1000}
             priority
@@ -43,22 +43,35 @@ const Hero = () => {
 
         {/* sub text */}
         <motion.p
-          class="leading-relaxed mb-8 text-white flex flex-col items-center justify-center text-xl"
+          class="leading-relaxed text-white flex flex-col items-center justify-center sm:text-xl"
           variants={animationThree}
           initial="hidden"
           animate="visible"
         >
-          <p className="mt-12 font-bold text-xl text-[#ff9e03]">Theme</p>
+          <motion.p
+            variants={animationOne}
+            initial="hidden"
+            animate="visible"
+            className="sm:mt-12 mt-8 font-bold text-xl text-[#ff9e03]"
+          >
+            Theme
+          </motion.p>
           <Image
             className="w-2/3 h-2/3"
             src="/igniting.png"
-            alt="Hackathon"
+            alt="amihub hackathon theme is IGNITING INNOVATION"
             width={1000}
             height={1000}
             priority
           />
           <br />
-          {hero.subTextTwo}
+          <motion.span
+            variants={animationTwo}
+            initial="hidden"
+            animate="visible"
+          >
+            {hero.subTextTwo}
+          </motion.span>
         </motion.p>
       </div>
       {/* end hero text */}

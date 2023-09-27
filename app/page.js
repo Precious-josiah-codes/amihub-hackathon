@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import ProductImage from "./sections/ProductImage";

@@ -50,7 +50,7 @@ const ProductImage = () => {
                 class="object-contain w-full h-full rounded-3xl"
                 src="/prizemoney.png"
                 fill
-                alt=""
+                alt="Win 10 Million naira from science technology hackathon"
                 priority
               />
             </motion.div>

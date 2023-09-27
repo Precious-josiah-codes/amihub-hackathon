@@ -10,12 +10,6 @@ const SideBar = () => {
 
   const { navBar } = content;
 
-  const links = [
-    { url: "/", urlName: "About" },
-    { url: "/episodes", urlName: "Products" },
-    { url: "/community", urlName: "Contact" },
-    // { url: "/store", urlName: "Store" },
-  ];
   const linkStyle = "mb-6";
   return (
     <div

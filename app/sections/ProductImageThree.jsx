@@ -94,7 +94,7 @@ const ProductImageThree = () => {
                   Step 2 -{" "}
                 </span>
                 Dowload, print and fill the hackathon letterhead.
-                <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
+                {/* <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
                   <a
                     href={"/line.png"}
                     download="line"
@@ -102,7 +102,7 @@ const ProductImageThree = () => {
                   >
                     download 📂
                   </a>
-                </div>
+                </div> */}
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
@@ -116,7 +116,7 @@ const ProductImageThree = () => {
                 </span>
                 Download, fill and submit a google drive link to your powerpoint
                 document containing your problem statement and solution
-                <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
+                {/* <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
                   <a
                     href={"/line.png"}
                     download="line"
@@ -124,7 +124,7 @@ const ProductImageThree = () => {
                   >
                     download 📂
                   </a>
-                </div>
+                </div> */}
               </li>
               <li>
                 <span className="font-bold text-left text-golden">

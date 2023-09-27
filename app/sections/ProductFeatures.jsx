@@ -47,7 +47,14 @@ const ProductFeatures = () => {
               class="object-cover w-full h-full"
               src="/Ellipse.png"
               fill
-              alt=""
+              alt="eight sectors in hackathon include: IoT,
+              Embedded Systems,
+              Software Solutions,
+              Oil & Gas Industry,
+              Telecommunication & Digital Communication Industry,
+              Energy & Power Industry,
+              Security Industry,
+              Health & Safety Industry,"
               priority
             />
           </div>

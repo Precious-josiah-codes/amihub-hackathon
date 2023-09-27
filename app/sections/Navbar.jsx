@@ -23,7 +23,7 @@ const Navbar = () => {
           class="object-contain w-full h-full"
           src={navBar.newlogo}
           fill
-          alt=""
+          alt="Africa Manufacturing Innovation Hub logo, Scitech 2023 Hackathon page header."
           priority
         />
       </div>

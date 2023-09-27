@@ -399,7 +399,7 @@ const onFinish = (values) => {
 };
 
 export const RegistrationForm = () => {
-  const launchDate = new Date("2023-09-30T10:00:00Z"); // Replace with actual launch date
+  const launchDate = new Date("2023-10-09T00:01:00Z"); // Replace with actual launch date
 
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -635,9 +635,9 @@ export const RegistrationForm = () => {
           </Button>
         </Form>
       ) : (
-        <div className="w-full flex flex-col items-center justify-center mt-4 text-white bg-golden py-4 rounded-xl">
-          {/* <h2>opens in:</h2> */}
-          <div className="w-full flex flex-row items-center sm:gap-4 gap-1 justify-center text-white sm:font-extrabold sm:text-4xl">
+        <div className="w-full flex flex-col items-center justify-center">
+          <h2 className="sm:text-3xl text-golden">opens in:</h2>
+          <div className="w-full flex flex-row items-center sm:gap-4 gap-1 justify-center text-white sm:font-extrabold sm:text-4xl mt-4 bg-golden sm:py-8 py-4 rounded-xl">
             <div>
               <span>{timeLeft?.days}</span> Days :
             </div>

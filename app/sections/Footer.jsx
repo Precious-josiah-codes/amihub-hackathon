@@ -4,13 +4,6 @@ import { Monoton } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
-const monoton = Monoton({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-monoton",
-  display: "swap",
-});
-
 const Footer = () => {
   return (
     <footer
@@ -134,7 +127,7 @@ const Footer = () => {
               </svg>
             </Link>
             {/* instagram */}
-            <Link href="https://www.instagram.com/invites/contact/?i=3rzbvzo0cnq1&utm_content=rrqdebd">
+            <Link href="https://www.instagram.com/amihubafrica">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -158,22 +151,6 @@ const Footer = () => {
               </svg>
             </Link>
           </div>
-
-          {/* subscribe to our news letter */}
-          {/* <div className="w-fit mx-auto sm:mx-0">
-            <label htmlFor="">Subscribe to our News Letter</label>
-            <div class="flex w-[17rem] mt-3">
-              <input
-                type="text"
-                id="website-admin"
-                class="rounded-none rounded-l-[5px] bg-transparent border borderStyle text-white focus:outline-none block flex-1 min-w-0 w-full text-sm  p-3 "
-                placeholder="elonmusk@mail.comsss"
-              />
-              <span class="inline-flex items-center px-3 text-sm text-white borderStyle border-l-0  rounded-r-[5px] bg-secondaryColor">
-                Email
-              </span>
-            </div>
-          </div> */}
         </div>
       </div>
       {/* amihub text */}

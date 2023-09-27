@@ -399,56 +399,49 @@ const onFinish = (values) => {
 };
 
 export const RegistrationForm = () => {
-  const [timer, setTimer] = React.useState({
-    days: 10,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const launchDate = new Date("2023-09-30T10:00:00Z"); // Replace with actual launch date
 
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const difference = launchDate - now;
+
+    if (difference < 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return { days, hours, minutes, seconds };
+  };
+
+  const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft());
   const [showForm, setShowForm] = React.useState(false);
 
   React.useEffect(() => {
-    const countdown = setInterval(() => {
+    const timer = setInterval(() => {
+      const timeLeft = calculateTimeLeft();
+      setTimeLeft(timeLeft);
+
       if (
-        timer.days === 0 &&
-        timer.hours === 0 &&
-        timer.minutes === 0 &&
-        timer.seconds === 0
+        timeLeft?.days === 0 &&
+        timeLeft?.hours === 0 &&
+        timeLeft?.minutes === 0 &&
+        timeLeft?.seconds === 0
       ) {
-        clearInterval(countdown);
+        clearInterval(timer);
         setShowForm(true);
-      } else {
-        let updatedTimer = { ...timer };
-
-        if (timer.seconds === 0) {
-          if (timer.minutes === 0) {
-            if (timer.hours === 0) {
-              updatedTimer.days -= 1;
-              updatedTimer.hours = 23;
-              updatedTimer.minutes = 59;
-              updatedTimer.seconds = 59;
-            } else {
-              updatedTimer.hours -= 1;
-              updatedTimer.minutes = 59;
-              updatedTimer.seconds = 59;
-            }
-          } else {
-            updatedTimer.minutes -= 1;
-            updatedTimer.seconds = 59;
-          }
-        } else {
-          updatedTimer.seconds -= 1;
-        }
-
-        setTimer(updatedTimer);
       }
     }, 1000);
 
     return () => {
-      clearInterval(countdown);
+      clearInterval(timer);
     };
-  }, [timer]);
+  }, []);
 
   return (
     <div className="w-full">
@@ -646,16 +639,16 @@ export const RegistrationForm = () => {
           {/* <h2>opens in:</h2> */}
           <div className="w-full flex flex-row items-center sm:gap-4 gap-1 justify-center text-white sm:font-extrabold sm:text-4xl">
             <div>
-              <span>{timer?.days}</span> Days :
+              <span>{timeLeft?.days}</span> Days :
             </div>
             <div>
-              <span>{timer?.hours}</span> Hrs :
+              <span>{timeLeft?.hours}</span> Hrs :
             </div>
             <div>
-              <span>{timer?.minutes}</span> Mins :
+              <span>{timeLeft?.minutes}</span> Mins :
             </div>
             <div>
-              <span>{timer?.seconds}</span> Secs
+              <span>{timeLeft?.seconds}</span> Secs
             </div>
           </div>
         </div>

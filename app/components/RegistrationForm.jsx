@@ -399,196 +399,267 @@ const onFinish = (values) => {
 };
 
 export const RegistrationForm = () => {
+  const [timer, setTimer] = React.useState({
+    days: 10,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  const [showForm, setShowForm] = React.useState(false);
+
+  React.useEffect(() => {
+    const countdown = setInterval(() => {
+      if (
+        timer.days === 0 &&
+        timer.hours === 0 &&
+        timer.minutes === 0 &&
+        timer.seconds === 0
+      ) {
+        clearInterval(countdown);
+        setShowForm(true);
+      } else {
+        let updatedTimer = { ...timer };
+
+        if (timer.seconds === 0) {
+          if (timer.minutes === 0) {
+            if (timer.hours === 0) {
+              updatedTimer.days -= 1;
+              updatedTimer.hours = 23;
+              updatedTimer.minutes = 59;
+              updatedTimer.seconds = 59;
+            } else {
+              updatedTimer.hours -= 1;
+              updatedTimer.minutes = 59;
+              updatedTimer.seconds = 59;
+            }
+          } else {
+            updatedTimer.minutes -= 1;
+            updatedTimer.seconds = 59;
+          }
+        } else {
+          updatedTimer.seconds -= 1;
+        }
+
+        setTimer(updatedTimer);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(countdown);
+    };
+  }, [timer]);
+
   return (
     <div className="w-full">
-      <Form
-        size="large"
-        className="w-full space-y-4"
-        scrollToFirstError
-        name="amihub_hackathon_registration_form"
-        {...formItemLayoutWithOutLabel}
-        onFinish={onFinish}
-      >
-        <div>
-          <p className="text-white">Select your School</p>
-          <Cascader
-            className="w-full"
-            options={schoolOptions}
-            onChange={onChange}
-            changeOnSelect
-          />
-        </div>
-        <div>
-          <p className="text-white">If you chose &quot;Other&quot;</p>
-          <Input
-            placeholder={
-              "Name of your university, and LGA. E.g: University of Port Harcourt, Obio/Akpor LGA"
-            }
-          />{" "}
-        </div>
-        <div>
-          <p className="text-white">Team Tag</p>
-          <Input
-            required
-            name="team_tag"
-            placeholder={"The name of your team E.g Awesome Team"}
-          />
-        </div>
-        <div>
-          <p className="text-white">
-            Names of team members, departments, and matric number
-          </p>
-          <Form.List
-            className="w-full flex flex-col items-start justify-start"
-            name="names_of_team_members"
-          >
-            {(fields, { add, remove }, { errors }) => (
-              <>
-                {fields.map((field, index) => (
-                  <Form.Item
-                    className="text-white flex flex-col sm:flex-row w-full"
-                    {...(index < 5
-                      ? formItemLayout
-                      : formItemLayoutWithOutLabel)}
-                    required={false}
-                    label={`Member ${index + 1}`}
-                    key={field.key}
-                  >
-                    <div className="w-full flex gap-2 sm:flex-row flex-col">
-                      <Form.Item
-                        {...field}
-                        className="sm:w-1/2 w-full"
-                        name={[field.name, `team_member_${index + 1}`]}
-                        id={`team_member_${index + 1}`}
-                        validateTrigger={["onChange", "onBlur"]}
-                        rules={[
-                          {
-                            required: true,
-                            whitespace: true,
-                            message: "Please input team member's Name.",
-                          },
-                        ]}
-                        noStyle
-                      >
-                        <Input
-                          placeholder="Full Name"
-                          className="w-full sm:w-1/2"
-                        />
-                      </Form.Item>
-                      <Form.Item
-                        {...field}
-                        className="sm:w-1/2 w-full"
-                        name={[field.name, `department_${index + 1}`]}
-                        id={`department_${index + 1}`}
-                        validateTrigger={["onChange", "onBlur"]}
-                        rules={[
-                          {
-                            required: true,
-                            whitespace: true,
-                            message: "Please input team member's Faculty.",
-                          },
-                        ]}
-                        noStyle
-                      >
-                        <Input
-                          placeholder="Department"
-                          className="w-full sm:w-1/2"
-                        />
-                      </Form.Item>
-                      <Form.Item
-                        {...field}
-                        className="sm:w-1/2 w-full"
-                        name={[field.name, `matno_${index + 1}`]}
-                        id={`matno_${index + 1}`}
-                        validateTrigger={["onChange", "onBlur"]}
-                        rules={[
-                          {
-                            required: true,
-                            whitespace: true,
-                            message: "Please input team member's Matric No.",
-                          },
-                        ]}
-                        noStyle
-                      >
-                        <Input
-                          placeholder="Matric No"
-                          className="w-full sm:w-1/2"
-                        />
-                      </Form.Item>
-                    </div>
-                    {fields.length >= 1 ? (
-                      <div
-                        className="cursor-pointer"
-                        onClick={() => remove(field.name)}
-                      >
-                        Remove team member{" "}
-                        <MinusCircleOutlined className="dynamic-delete-button" />
-                      </div>
-                    ) : null}
-                  </Form.Item>
-                ))}
-                <div className="w-full flex flex-col items-start justify-start">
-                  {fields.length < 4 ? (
-                    <Button
-                      className="text-golden sm:w-1/3 w-full border-golden rounded-full"
-                      type="default"
-                      onClick={() => add()}
-                      icon={<PlusOutlined />}
-                    >
-                      Add team member
-                    </Button>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </>
-            )}
-          </Form.List>
-        </div>
-        <div>
-          <p className="text-white">Sector</p>
-          <Select
-            className="w-full"
-            options={sectorOptions}
-            placeholder={"e.g Oil & Gas Industry"}
-          />
-        </div>
-        <div>
-          <p className="text-white">
-            How will the prize money improve your solution?
-          </p>
-          <TextArea
-            className="text-white"
-            showCount
-            placeholder={
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, nesciunt neque. Molestiae officia beatae voluptate ea vel!"
-            }
-            rows={5}
-            maxLength={300}
-          />
-        </div>
-        <div>
-          <p className="text-white">
-            Link to your problem and solution document (powerpoint)
-          </p>
-          <Input placeholder={"Google drive link"} />
-        </div>
-        <div>
-          <p className="text-white">
-            Link to your 2 minutes video summarizing your powerpoint document
-          </p>
-          <Input placeholder={"Google drive link"} />
-        </div>
-        <br />
-        <br />
-        <Button
-          className="bg-golden sm:w-1/3 w-full rounded-full"
-          type="primary"
-          htmlType="submit"
+      {showForm ? (
+        <Form
+          size="large"
+          className="w-full space-y-4"
+          scrollToFirstError
+          name="amihub_hackathon_registration_form"
+          {...formItemLayoutWithOutLabel}
+          onFinish={onFinish}
         >
-          Submit
-        </Button>
-      </Form>
+          <div>
+            <p className="text-white">Select your School</p>
+            <Cascader
+              className="w-full"
+              options={schoolOptions}
+              onChange={onChange}
+              changeOnSelect
+            />
+          </div>
+          <div>
+            <p className="text-white">If you chose &quot;Other&quot;</p>
+            <Input
+              placeholder={
+                "Name of your university, and LGA. E.g: University of Port Harcourt, Obio/Akpor LGA"
+              }
+            />{" "}
+          </div>
+          <div>
+            <p className="text-white">Team Tag</p>
+            <Input
+              required
+              name="team_tag"
+              placeholder={"The name of your team E.g Awesome Team"}
+            />
+          </div>
+          <div>
+            <p className="text-white">
+              Names of team members, departments, and matric number
+            </p>
+            <Form.List
+              className="w-full flex flex-col items-start justify-start"
+              name="names_of_team_members"
+            >
+              {(fields, { add, remove }, { errors }) => (
+                <>
+                  {fields.map((field, index) => (
+                    <Form.Item
+                      className="text-white flex flex-col sm:flex-row w-full"
+                      {...(index < 5
+                        ? formItemLayout
+                        : formItemLayoutWithOutLabel)}
+                      required={false}
+                      label={`Member ${index + 1}`}
+                      key={field.key}
+                    >
+                      <div className="w-full flex gap-2 sm:flex-row flex-col">
+                        <Form.Item
+                          {...field}
+                          className="sm:w-1/2 w-full"
+                          name={[field.name, `team_member_${index + 1}`]}
+                          id={`team_member_${index + 1}`}
+                          validateTrigger={["onChange", "onBlur"]}
+                          rules={[
+                            {
+                              required: true,
+                              whitespace: true,
+                              message: "Please input team member's Name.",
+                            },
+                          ]}
+                          noStyle
+                        >
+                          <Input
+                            placeholder="Full Name"
+                            className="w-full sm:w-1/2"
+                          />
+                        </Form.Item>
+                        <Form.Item
+                          {...field}
+                          className="sm:w-1/2 w-full"
+                          name={[field.name, `department_${index + 1}`]}
+                          id={`department_${index + 1}`}
+                          validateTrigger={["onChange", "onBlur"]}
+                          rules={[
+                            {
+                              required: true,
+                              whitespace: true,
+                              message: "Please input team member's Faculty.",
+                            },
+                          ]}
+                          noStyle
+                        >
+                          <Input
+                            placeholder="Department"
+                            className="w-full sm:w-1/2"
+                          />
+                        </Form.Item>
+                        <Form.Item
+                          {...field}
+                          className="sm:w-1/2 w-full"
+                          name={[field.name, `matno_${index + 1}`]}
+                          id={`matno_${index + 1}`}
+                          validateTrigger={["onChange", "onBlur"]}
+                          rules={[
+                            {
+                              required: true,
+                              whitespace: true,
+                              message: "Please input team member's Matric No.",
+                            },
+                          ]}
+                          noStyle
+                        >
+                          <Input
+                            placeholder="Matric No"
+                            className="w-full sm:w-1/2"
+                          />
+                        </Form.Item>
+                      </div>
+                      {fields.length >= 1 ? (
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => remove(field.name)}
+                        >
+                          Remove team member{" "}
+                          <MinusCircleOutlined className="dynamic-delete-button" />
+                        </div>
+                      ) : null}
+                    </Form.Item>
+                  ))}
+                  <div className="w-full flex flex-col items-start justify-start">
+                    {fields.length < 4 ? (
+                      <Button
+                        className="text-golden sm:w-1/3 w-full border-golden rounded-full"
+                        type="default"
+                        onClick={() => add()}
+                        icon={<PlusOutlined />}
+                      >
+                        Add team member
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </>
+              )}
+            </Form.List>
+          </div>
+          <div>
+            <p className="text-white">Sector</p>
+            <Select
+              className="w-full"
+              options={sectorOptions}
+              placeholder={"e.g Oil & Gas Industry"}
+            />
+          </div>
+          <div>
+            <p className="text-white">
+              How will the prize money improve your solution?
+            </p>
+            <TextArea
+              className="text-white"
+              showCount
+              placeholder={
+                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, nesciunt neque. Molestiae officia beatae voluptate ea vel!"
+              }
+              rows={5}
+              maxLength={300}
+            />
+          </div>
+          <div>
+            <p className="text-white">
+              Link to your problem and solution document (powerpoint)
+            </p>
+            <Input placeholder={"Google drive link"} />
+          </div>
+          <div>
+            <p className="text-white">
+              Link to your 2 minutes video summarizing your powerpoint document
+            </p>
+            <Input placeholder={"Google drive link"} />
+          </div>
+          <br />
+          <br />
+          <Button
+            className="bg-golden sm:w-1/3 w-full rounded-full"
+            type="primary"
+            htmlType="submit"
+          >
+            Submit
+          </Button>
+        </Form>
+      ) : (
+        <div className="w-full flex flex-col items-center justify-center mt-4 text-white bg-golden py-4 rounded-xl">
+          {/* <h2>opens in:</h2> */}
+          <div className="w-full flex flex-row items-center sm:gap-4 gap-1 justify-center text-white sm:font-extrabold sm:text-4xl">
+            <div>
+              <span>{timer?.days}</span> Days :
+            </div>
+            <div>
+              <span>{timer?.hours}</span> Hrs :
+            </div>
+            <div>
+              <span>{timer?.minutes}</span> Mins :
+            </div>
+            <div>
+              <span>{timer?.seconds}</span> Secs
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

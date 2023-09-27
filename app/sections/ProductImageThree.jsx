@@ -16,11 +16,11 @@ const ProductImageThree = () => {
           viewport={{ once: true }}
           className="flex flex-col w-full items-center justify-center px-4 sm:px-40"
         >
-          <div className="text-left sm:w-[60%] w-full">
+          <div className="text-left flex flex-col w-full items-center justify-center">
             <h1 className="sm:text-4xl text-2xl text-center mb-4 text-golden">
               How To Register
             </h1>
-            <ul className="list-disc space-y-4">
+            <ul className="list-disc space-y-4 sm:w-2/3 w-full">
               <li>
                 <span className="font-bold text-left text-golden">
                   Step 1 -{" "}
@@ -98,7 +98,7 @@ const ProductImageThree = () => {
                   <a
                     href={"/line.png"}
                     download="line"
-                    className="border-2 border-golden rounded-full py-1 px-6 capitalize"
+                    className="border-2 border-golden hover:bg-white hover:text-black hover:scale-110 transition-all ease-in-out rounded-full py-1 px-6 capitalize"
                   >
                     download 📂
                   </a>
@@ -120,7 +120,7 @@ const ProductImageThree = () => {
                   <a
                     href={"/line.png"}
                     download="line"
-                    className="border-2 border-golden rounded-full py-1 px-6 capitalize"
+                    className="border-2 border-golden hover:bg-white hover:text-black hover:scale-110 transition-all ease-in-out rounded-full py-1 px-6 capitalize"
                   >
                     download 📂
                   </a>
@@ -137,10 +137,10 @@ const ProductImageThree = () => {
               <h1 className="sm:text-4xl text-xl text-center mb-4 text-golden">
                 Registration Form
               </h1>
-              <div>
-                <RegistrationForm />
-              </div>
             </ul>
+            <div className="w-full">
+              <RegistrationForm />
+            </div>
             <br />
             <br />
           </div>

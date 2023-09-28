@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Cascader, Input, Button, Select } from "antd";
+import { Form, Cascader, Input, Button, Select, Divider } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
 const sectorOptions = [
@@ -16,7 +16,7 @@ const sectorOptions = [
 const schoolOptions = [
   {
     "value": "akwa_ibom",
-    "label": "Akwa Ibom",
+    "label": "Akwa Ibom State",
     "children": [
       {
         "value": "university_of_uyo",
@@ -68,7 +68,7 @@ const schoolOptions = [
       },
       {
         "value": "foundation_college_of_technology_(innovation_polytechnic)",
-        "label": "Foundation College of Technology (Innovation Polytechnic)",
+        "label": "Foundation College of Technology(Innovation Poly)",
       },
       {
         "value": "southern_atlantic_polytechnic",
@@ -82,7 +82,7 @@ const schoolOptions = [
   },
   {
     "value": "bayelsa",
-    "label": "Bayelsa",
+    "label": "Bayelsa State",
     "children": [
       {
         "value": "federal_university,_otuoke",
@@ -94,7 +94,7 @@ const schoolOptions = [
       },
       {
         "value": "federal_science_and_technical_college",
-        "label": "Federal Science and Technical College",
+        "label": "Federal Science & Technical College",
       },
       {
         "value": "niger_delta_university_yenagoa",
@@ -106,7 +106,7 @@ const schoolOptions = [
       },
       {
         "value": "institute_of_science_and_technology_yenagoa",
-        "label": "Institute of Science and Technology Yenagoa",
+        "label": "Institute of Science & Technology Yenagoa",
       },
       {
         "value": "other",
@@ -116,7 +116,7 @@ const schoolOptions = [
   },
   {
     "value": "cross_river",
-    "label": "Cross River",
+    "label": "Cross River State",
     "children": [
       {
         "value": "university_of_calabar",
@@ -162,7 +162,7 @@ const schoolOptions = [
       },
       {
         "value": "delta_state_university_of_science_and_technology",
-        "label": "Delta State University of Science and Technology",
+        "label": "Delta State University of Science & Technology",
       },
       {
         "value": "delta_state_polytechnic,_oghara",
@@ -228,7 +228,7 @@ const schoolOptions = [
   },
   {
     "value": "edo",
-    "label": "Edo",
+    "label": "Edo State",
     "children": [
       {
         "value": "university_of_benin",
@@ -256,7 +256,7 @@ const schoolOptions = [
       },
       {
         "value": "edo_state_institute_of_technology_and_management",
-        "label": "Edo State Institute Of Technology and Management",
+        "label": "Edo State Institute Of Technology & Management",
       },
       {
         "value": "edo_state_college_of_agriculture,_iguoriakhi.",
@@ -302,7 +302,7 @@ const schoolOptions = [
   },
   {
     "value": "rivers",
-    "label": "Rivers",
+    "label": "Rivers State",
     "children": [
       {
         "value": "university_of_port_harcourt",
@@ -445,7 +445,7 @@ export const RegistrationForm = () => {
 
   return (
     <div className="w-full">
-      {showForm ? (
+      {showForm === false ? (
         <Form
           size="large"
           className="w-full space-y-4"
@@ -457,7 +457,21 @@ export const RegistrationForm = () => {
           <div>
             <p className="text-white">Select your School</p>
             <Cascader
-              className="w-full"
+              allowClear={true}
+              showSearch
+              dropdownMenuColumnStyle={{ padding: 10 }}
+              placeholder="search for your school"
+              dropdownRender={(menus) => (
+                <div>
+                  {menus}
+                  <Divider className="m-0" />
+                  <div className="p-2 text-golden font-bold">
+                    If your school is not in the list, <br /> please select
+                    &quot;Other&quot;
+                  </div>
+                </div>
+              )}
+              className="w-full text-xs"
               options={schoolOptions}
               onChange={onChange}
               changeOnSelect

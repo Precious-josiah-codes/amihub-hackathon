@@ -445,7 +445,7 @@ export const RegistrationForm = () => {
 
   return (
     <div className="w-full">
-      {showForm === false ? (
+      {showForm ? (
         <Form
           size="large"
           className="w-full space-y-4"

@@ -18,12 +18,14 @@ export const metadata = {
   applicationName: "SciTech-23",
   referrer: "origin-when-cross-origin",
   icons: {
-    icon: "/og-image.jpeg",
-    shortcut: "/og-image.jpeg",
-    apple: "/og-image.jpeg",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+    type: "image/x-icon",
     other: {
-      rel: "og-image",
-      url: "/og-image.jpeg",
+      rel: "icon",
+      url: "/favicon.ico",
+      type: "image/x-icon",
     },
   },
   keywords: [

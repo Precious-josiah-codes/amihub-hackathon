@@ -3,14 +3,14 @@ import { Form, Cascader, Input, Button, Select, Divider } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
 const sectorOptions = [
-  { value: "Oil & Gas Industry", label: "Oil & Gas Industry" },
+  { value: "oil_and_gas_industry", label: "Oil & Gas Industry" },
   {
-    value: "Telecommunication & Digital Communication Industry",
+    value: "telecommunication_and_digital_communication_industry",
     label: "Telecommunication & Digital Communication Industry",
   },
-  { value: "Energy & Power Industry", label: "Energy & Power Industry" },
-  { value: "Security Industry", label: "Security Industry" },
-  { value: "Health & Safety Industry", label: "Health & Safety Industry" },
+  { value: "energy_and_power_industry", label: "Energy & Power Industry" },
+  { value: "security_industry", label: "Security Industry" },
+  { value: "health_and_safety_industry", label: "Health & Safety Industry" },
 ];
 
 const schoolOptions = [
@@ -390,16 +390,8 @@ const formItemLayoutWithOutLabel = {
 
 const { TextArea } = Input;
 
-const onChange = (value) => {
-  console.log(value);
-};
-
-const onFinish = (values) => {
-  console.log("Received values of form:", values);
-};
-
 export const RegistrationForm = () => {
-  const launchDate = new Date("2023-10-09T00:01:00Z"); // Replace with actual launch date
+  const launchDate = new Date("2023-10-09T12:01:00Z"); // Replace with actual launch date
 
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -421,6 +413,63 @@ export const RegistrationForm = () => {
 
   const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft());
   const [showForm, setShowForm] = React.useState(false);
+  const [formData, setFormData] = React.useState({
+    state: "",
+    school: "",
+    other: null,
+    team_tag: "",
+    team_members: [],
+    sector: "",
+    why_10_million: "",
+    powerpoint_link: "",
+    video_link: "",
+  });
+
+  const onSchoolSelect = (value) => {
+    setFormData((prev) => {
+      return { ...prev, state: value[0], school: value[1] };
+    });
+  };
+
+  const onOtherSchool = (event) => {
+    setFormData((prev) => {
+      return { ...prev, other: event.target.value };
+    });
+  };
+
+  const onTeamTagChange = (event) => {
+    setFormData((prev) => {
+      return { ...prev, team_tag: event.target.value };
+    });
+  };
+  const onWhyChange = (event) => {
+    setFormData((prev) => {
+      return { ...prev, why_10_million: event.target.value };
+    });
+  };
+  const onPowerpointChange = (event) => {
+    setFormData((prev) => {
+      return { ...prev, powerpoint_link: event.target.value };
+    });
+  };
+  const onVideoChange = (event) => {
+    setFormData((prev) => {
+      return { ...prev, video_link: event.target.value };
+    });
+  };
+
+  const onSectorChange = (value) => {
+    setFormData((prev) => {
+      return { ...prev, sector: value };
+    });
+  };
+
+  const onFinish = (values) => {
+    setFormData((prev) => {
+      return { ...prev, team_members: values.names_of_team_members };
+    });
+    console.log(formData, "the whole thing");
+  };
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -473,7 +522,7 @@ export const RegistrationForm = () => {
               )}
               className="w-full text-xs"
               options={schoolOptions}
-              onChange={onChange}
+              onChange={onSchoolSelect}
               changeOnSelect
             />
           </div>
@@ -483,6 +532,7 @@ export const RegistrationForm = () => {
               placeholder={
                 "Name of your university, and LGA. E.g: University of Port Harcourt, Obio/Akpor LGA"
               }
+              onChange={onOtherSchool}
             />{" "}
           </div>
           <div>
@@ -491,6 +541,7 @@ export const RegistrationForm = () => {
               required
               name="team_tag"
               placeholder={"The name of your team E.g Awesome Team"}
+              onChange={onTeamTagChange}
             />
           </div>
           <div>
@@ -501,7 +552,7 @@ export const RegistrationForm = () => {
               className="w-full flex flex-col items-start justify-start"
               name="names_of_team_members"
             >
-              {(fields, { add, remove }, { errors }) => (
+              {(fields, { add, remove }) => (
                 <>
                   {fields.map((field, index) => (
                     <Form.Item
@@ -517,6 +568,7 @@ export const RegistrationForm = () => {
                         <Form.Item
                           {...field}
                           className="sm:w-1/2 w-full"
+                          key={[field.key, `team_member_${index + 1}`]}
                           name={[field.name, `team_member_${index + 1}`]}
                           id={`team_member_${index + 1}`}
                           validateTrigger={["onChange", "onBlur"]}
@@ -537,6 +589,7 @@ export const RegistrationForm = () => {
                         <Form.Item
                           {...field}
                           className="sm:w-1/2 w-full"
+                          key={[field.key, `department_${index + 1}`]}
                           name={[field.name, `department_${index + 1}`]}
                           id={`department_${index + 1}`}
                           validateTrigger={["onChange", "onBlur"]}
@@ -557,6 +610,7 @@ export const RegistrationForm = () => {
                         <Form.Item
                           {...field}
                           className="sm:w-1/2 w-full"
+                          key={[field.key, `matno_${index + 1}`]}
                           name={[field.name, `matno_${index + 1}`]}
                           id={`matno_${index + 1}`}
                           validateTrigger={["onChange", "onBlur"]}
@@ -610,6 +664,7 @@ export const RegistrationForm = () => {
               className="w-full"
               options={sectorOptions}
               placeholder={"e.g Oil & Gas Industry"}
+              onSelect={onSectorChange}
             />
           </div>
           <div>
@@ -624,19 +679,23 @@ export const RegistrationForm = () => {
               }
               rows={5}
               maxLength={300}
+              onChange={onWhyChange}
             />
           </div>
           <div>
             <p className="text-white">
               Link to your problem and solution document (powerpoint)
             </p>
-            <Input placeholder={"Google drive link"} />
+            <Input
+              placeholder={"Google drive link"}
+              onChange={onPowerpointChange}
+            />
           </div>
           <div>
             <p className="text-white">
               Link to your 2 minutes video summarizing your powerpoint document
             </p>
-            <Input placeholder={"Google drive link"} />
+            <Input placeholder={"Google drive link"} onChange={onVideoChange} />
           </div>
           <br />
           <br />

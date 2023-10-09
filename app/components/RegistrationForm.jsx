@@ -515,23 +515,21 @@ export const RegistrationForm = () => {
   };
 
   const onFinish = async (values) => {
+    const team = await values.names_of_team_members;
     setLoading(true);
     setFormData((prev) => {
-      return { ...prev, team_members: values.names_of_team_members };
+      return { ...prev, team_members: team };
     });
-    console.log(formData, "the whole thing");
     try {
       const response = await axios.post(
         "https://proxie-backend.onrender.com/api/v1/hackathons/",
         formData,
         config
       );
-      console.log(response);
-      if (response.response.status === 200) {
+      if (response.data.email) {
         setSuccessful(true);
       }
     } catch (error) {
-      console.log(error, "caught error");
       setErrorMessage(error.message);
     } finally {
       setLoading(false);
@@ -811,9 +809,7 @@ export const RegistrationForm = () => {
           >
             Submit
           </Button>
-          {errorMessage ? (
-            <p className="text-red-500 font-bold">{errorMessage}</p>
-          ) : successful ? (
+          {successful ? (
             <p className="text-green-500 font-bold">
               You have successfully registered
             </p>

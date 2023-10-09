@@ -420,9 +420,9 @@ export const RegistrationForm = () => {
     team_tag: "",
     team_members: [],
     sector: "",
-    why_10_million: "",
-    powerpoint_link: "",
-    video_link: "",
+    prize_money_intent: "",
+    powerpoint: "",
+    video: "",
   });
 
   const onSchoolSelect = (value) => {
@@ -444,17 +444,17 @@ export const RegistrationForm = () => {
   };
   const onWhyChange = (event) => {
     setFormData((prev) => {
-      return { ...prev, why_10_million: event.target.value };
+      return { ...prev, prize_money_intent: event.target.value };
     });
   };
   const onPowerpointChange = (event) => {
     setFormData((prev) => {
-      return { ...prev, powerpoint_link: event.target.value };
+      return { ...prev, powerpoint: event.target.value };
     });
   };
   const onVideoChange = (event) => {
     setFormData((prev) => {
-      return { ...prev, video_link: event.target.value };
+      return { ...prev, video: event.target.value };
     });
   };
 
@@ -494,7 +494,7 @@ export const RegistrationForm = () => {
 
   return (
     <div className="w-full">
-      {showForm ? (
+      {showForm === false ? (
         <Form
           size="large"
           className="w-full space-y-4"
@@ -569,7 +569,7 @@ export const RegistrationForm = () => {
                           {...field}
                           className="sm:w-1/2 w-full"
                           key={[field.key, `team_member_${index + 1}`]}
-                          name={[field.name, `team_member_${index + 1}`]}
+                          name={[field.name, `full_name`]}
                           id={`team_member_${index + 1}`}
                           validateTrigger={["onChange", "onBlur"]}
                           rules={[
@@ -590,7 +590,7 @@ export const RegistrationForm = () => {
                           {...field}
                           className="sm:w-1/2 w-full"
                           key={[field.key, `department_${index + 1}`]}
-                          name={[field.name, `department_${index + 1}`]}
+                          name={[field.name, `department`]}
                           id={`department_${index + 1}`}
                           validateTrigger={["onChange", "onBlur"]}
                           rules={[
@@ -611,7 +611,7 @@ export const RegistrationForm = () => {
                           {...field}
                           className="sm:w-1/2 w-full"
                           key={[field.key, `matno_${index + 1}`]}
-                          name={[field.name, `matno_${index + 1}`]}
+                          name={[field.name, `matric_no`]}
                           id={`matno_${index + 1}`}
                           validateTrigger={["onChange", "onBlur"]}
                           rules={[

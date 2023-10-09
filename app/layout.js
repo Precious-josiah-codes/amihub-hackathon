@@ -145,12 +145,24 @@ export default function RootLayout({ children }) {
       <Script
         strategy="afterInteractive"
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-NWJXNWWPTZ"
+        src="https://www.googletagmanager.com/gtag/js?id=G-LFM96FP77V"
       ></Script>
       <Script id="google-analytics" strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || []; function gtag()
         {dataLayer.push(arguments)}
-        gtag('js', new Date()); gtag('config', 'G-NWJXNWWPTZ');`}
+        gtag('js', new Date()); gtag('config', 'G-LFM96FP77V');`}
+      </Script>
+      {/* Google tag (gtag.js) */}
+      <Script
+        strategy="afterInteractive"
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=AW-11362639791"
+      ></Script>
+      <Script strategy="afterInteractive" async id="google-ads">
+        {`window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-11362639791');`}
       </Script>
       <body className={`${inter.className} bg-primaryColor`}>
         <StoreProvider>{children}</StoreProvider>

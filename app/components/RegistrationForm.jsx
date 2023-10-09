@@ -396,7 +396,7 @@ const formItemLayoutWithOutLabel = {
 const { TextArea } = Input;
 
 export const RegistrationForm = () => {
-  const launchDate = new Date("2023-10-09T12:59:00Z"); // Replace with actual launch date
+  const launchDate = new Date("2023-10-09T13:59:00Z"); // Replace with actual launch date
 
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -423,7 +423,10 @@ export const RegistrationForm = () => {
   const [formData, setFormData] = React.useState({
     state: "",
     school: "",
-    other: null,
+    other: {
+      lga: null,
+      school: null,
+    },
     team_tag: "",
     team_members: [],
     sector: "",
@@ -441,9 +444,15 @@ export const RegistrationForm = () => {
     });
   };
 
+  const onOtherSchoolLga = (event) => {
+    setFormData((prev) => {
+      return { ...prev, other: { ...prev, lga: event.target.value } };
+    });
+  };
+
   const onOtherSchool = (event) => {
     setFormData((prev) => {
-      return { ...prev, other: event.target.value };
+      return { ...prev, other: { ...prev, school: event.target.value } };
     });
   };
 
@@ -576,11 +585,14 @@ export const RegistrationForm = () => {
           <div>
             <p className="text-white">If you chose &quot;Other&quot;</p>
             <Input
-              placeholder={
-                "Name of your university, and LGA. E.g: University of Port Harcourt, Obio/Akpor LGA"
-              }
+              placeholder={"Name of your State & LGA"}
+              onChange={onOtherSchoolLga}
+              className="mb-1"
+            />
+            <Input
+              placeholder={"Name of your university"}
               onChange={onOtherSchool}
-            />{" "}
+            />
           </div>
           <div>
             <p className="text-white">Team Tag</p>
@@ -747,14 +759,14 @@ export const RegistrationForm = () => {
           </div>
           <div>
             <p className="text-white">Your endorsement letter</p>
-            <Upload onChange={handleLetterChange}>
-              <Button
-                className="bg-golden sm:w-1/3 w-full rounded-full"
-                icon={<UploadOutlined />}
-              >
-                Select File
-              </Button>
-            </Upload>
+            <input
+              className="bg-golden sm:w-1/3 w-full rounded-full"
+              type="file"
+              id="letter"
+              name="letter"
+              accept=".docx, .pdf"
+              onChange={handleLetterChange}
+            />
           </div>
           <div>
             <p className="text-white">Your powerpoint file</p>
@@ -763,7 +775,7 @@ export const RegistrationForm = () => {
               type="file"
               id="powerpoint"
               name="powerpoint"
-              accept=".pptx, .docx"
+              accept=".pptx"
               onChange={handlePowerpointChange}
             />
           </div>
@@ -788,6 +800,9 @@ export const RegistrationForm = () => {
           >
             Submit
           </Button>
+          {errorMessage && (
+            <p className="text-red-500 font-bold">{errorMessage}</p>
+          )}
         </Form>
       ) : (
         <div className="w-full flex flex-col items-center justify-center">

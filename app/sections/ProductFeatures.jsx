@@ -3,12 +3,7 @@ import Image from "next/image";
 import FeaturesCard from "../components/FeaturesCard";
 import { content } from "../data/content";
 import { motion } from "framer-motion";
-import {
-  animationFour,
-  animationOne,
-  animationThree,
-  animationTwo,
-} from "../animation";
+import { animationOne, animationThree, animationTwo } from "../animation";
 
 const ProductFeatures = () => {
   const { features } = content;

@@ -93,16 +93,19 @@ const ProductImageThree = () => {
                 <span className="font-bold text-left text-golden">
                   Step 2 -{" "}
                 </span>
-                Dowload, print and fill the hackathon letterhead.
-                {/* <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
+                Dowload the endorsement letter, fill, get it stamped by faculty
+                administration, scan and upload to the portal.
+                <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
                   <a
-                    href={"/line.png"}
-                    download="line"
+                    href={
+                      "https://docs.google.com/document/d/15Q1UW-0vrVwyYfan1LELuTY51K1iLlOs/edit?usp=sharing&ouid=106322594108853380666&rtpof=true&sd=true"
+                    }
+                    target={"_blank"}
                     className="border-2 border-golden hover:bg-white hover:text-black hover:scale-110 transition-all ease-in-out rounded-full py-1 px-6 capitalize"
                   >
                     download 📂
                   </a>
-                </div> */}
+                </div>
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
@@ -114,24 +117,26 @@ const ProductImageThree = () => {
                 <span className="font-bold text-left text-golden">
                   Step 4 -{" "}
                 </span>
-                Download, fill and submit a google drive link to your powerpoint
-                document containing your problem statement and solution
-                {/* <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
+                Using the slide format provided, prepare & upload your product
+                presentation slide.
+                <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
                   <a
-                    href={"/line.png"}
-                    download="line"
+                    href={
+                      "https://docs.google.com/presentation/d/1C6J5mjMxtc70QEQbhtb_XR39iSRM0GO-/edit?usp=sharing&ouid=106322594108853380666&rtpof=true&sd=true"
+                    }
+                    target={"_blank"}
                     className="border-2 border-golden hover:bg-white hover:text-black hover:scale-110 transition-all ease-in-out rounded-full py-1 px-6 capitalize"
                   >
                     download 📂
                   </a>
-                </div> */}
+                </div>
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
                   Step 5 -{" "}
                 </span>
-                Create a 2-minute video describing the content of your
-                powerpoint document
+                Create a 2-minute video describing your proposed solution,
+                citing it's importance to the society.
               </li>
               <br />
               <h1 className="sm:text-4xl text-xl text-center mb-4 text-golden">

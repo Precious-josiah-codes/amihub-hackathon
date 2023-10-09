@@ -1,6 +1,11 @@
 import React from "react";
-import { Form, Cascader, Input, Button, Select, Divider } from "antd";
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { Form, Cascader, Input, Button, Select, Divider, Upload } from "antd";
+import {
+  MinusCircleOutlined,
+  PlusOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
+import axios from "axios";
 
 const sectorOptions = [
   { value: "oil_and_gas_industry", label: "Oil & Gas Industry" },
@@ -391,7 +396,7 @@ const formItemLayoutWithOutLabel = {
 const { TextArea } = Input;
 
 export const RegistrationForm = () => {
-  const launchDate = new Date("2023-10-09T12:01:00Z"); // Replace with actual launch date
+  const launchDate = new Date("2023-10-09T12:30:00Z"); // Replace with actual launch date
 
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -413,6 +418,8 @@ export const RegistrationForm = () => {
 
   const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft());
   const [showForm, setShowForm] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
     state: "",
     school: "",
@@ -421,8 +428,11 @@ export const RegistrationForm = () => {
     team_members: [],
     sector: "",
     prize_money_intent: "",
-    powerpoint: "",
-    video: "",
+    email: "",
+    phone: "",
+    letter: null,
+    powerpoint: null,
+    video: null,
   });
 
   const onSchoolSelect = (value) => {
@@ -447,14 +457,14 @@ export const RegistrationForm = () => {
       return { ...prev, prize_money_intent: event.target.value };
     });
   };
-  const onPowerpointChange = (event) => {
+  const onEmailChange = (event) => {
     setFormData((prev) => {
-      return { ...prev, powerpoint: event.target.value };
+      return { ...prev, email: event.target.value };
     });
   };
-  const onVideoChange = (event) => {
+  const onPhoneChange = (event) => {
     setFormData((prev) => {
-      return { ...prev, video: event.target.value };
+      return { ...prev, phone: event.target.value };
     });
   };
 
@@ -464,11 +474,48 @@ export const RegistrationForm = () => {
     });
   };
 
-  const onFinish = (values) => {
+  const handleLetterChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({
+      ...formData,
+      photo: file,
+    });
+  };
+
+  const handlePowerpointChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({
+      ...formData,
+      photo: file,
+    });
+  };
+
+  const handleVideoChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({
+      ...formData,
+      photo: file,
+    });
+  };
+
+  const onFinish = async (values) => {
+    setLoading(true);
     setFormData((prev) => {
       return { ...prev, team_members: values.names_of_team_members };
     });
     console.log(formData, "the whole thing");
+    try {
+      const response = await axios.post(
+        "https://proxie-backend.onrender.com/api/v1/hackathons/",
+        formData
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error, "caught error");
+      setErrorMessage(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   React.useEffect(() => {
@@ -683,23 +730,70 @@ export const RegistrationForm = () => {
             />
           </div>
           <div>
-            <p className="text-white">
-              Link to your problem and solution document (powerpoint)
-            </p>
+            <p className="text-white">Your email address</p>
             <Input
-              placeholder={"Google drive link"}
-              onChange={onPowerpointChange}
+              type="email"
+              placeholder={"Email address"}
+              onChange={onEmailChange}
             />
           </div>
           <div>
-            <p className="text-white">
-              Link to your 2 minutes video summarizing your powerpoint document
-            </p>
-            <Input placeholder={"Google drive link"} onChange={onVideoChange} />
+            <p className="text-white">Your phone number</p>
+            <Input
+              type="tel"
+              placeholder={"Phone Number"}
+              onChange={onPhoneChange}
+            />
+          </div>
+          <div>
+            <p className="text-white">Your endorsement letter</p>
+            <Upload
+              type="tel"
+              placeholder={"Phone Number"}
+              onChange={onPhoneChange}
+            >
+              <Button
+                className="bg-golden sm:w-1/3 w-full rounded-full"
+                icon={<UploadOutlined />}
+              >
+                Select File
+              </Button>
+            </Upload>
+          </div>
+          <div>
+            <p className="text-white">Your powerpoint file</p>
+            <Upload
+              type="tel"
+              placeholder={"Phone Number"}
+              onChange={onPhoneChange}
+            >
+              <Button
+                className="bg-golden sm:w-1/3 w-full rounded-full"
+                icon={<UploadOutlined />}
+              >
+                Select File
+              </Button>
+            </Upload>
+          </div>
+          <div>
+            <p className="text-white">Your video file</p>
+            <Upload
+              type="tel"
+              placeholder={"Phone Number"}
+              onChange={onPhoneChange}
+            >
+              <Button
+                className="bg-golden sm:w-1/3 w-full rounded-full"
+                icon={<UploadOutlined />}
+              >
+                Select File
+              </Button>
+            </Upload>
           </div>
           <br />
           <br />
           <Button
+            loading={loading}
             className="bg-golden sm:w-1/3 w-full rounded-full"
             type="primary"
             htmlType="submit"

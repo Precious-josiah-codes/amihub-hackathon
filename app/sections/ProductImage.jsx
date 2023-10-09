@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { animationFour, animationOne, animationTwo } from "../animation";
+import { animationFour, animationOne } from "../animation";
 import Image from "next/image";
 
 const ProductImage = () => {

@@ -396,7 +396,7 @@ const formItemLayoutWithOutLabel = {
 const { TextArea } = Input;
 
 export const RegistrationForm = () => {
-  const launchDate = new Date("2023-10-09T12:30:00Z"); // Replace with actual launch date
+  const launchDate = new Date("2023-10-09T12:59:00Z"); // Replace with actual launch date
 
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -541,7 +541,7 @@ export const RegistrationForm = () => {
 
   return (
     <div className="w-full">
-      {showForm ? (
+      {showForm === false ? (
         <Form
           size="large"
           className="w-full space-y-4"
@@ -747,11 +747,7 @@ export const RegistrationForm = () => {
           </div>
           <div>
             <p className="text-white">Your endorsement letter</p>
-            <Upload
-              type="tel"
-              placeholder={"Phone Number"}
-              onChange={onPhoneChange}
-            >
+            <Upload onChange={handleLetterChange}>
               <Button
                 className="bg-golden sm:w-1/3 w-full rounded-full"
                 icon={<UploadOutlined />}
@@ -762,11 +758,7 @@ export const RegistrationForm = () => {
           </div>
           <div>
             <p className="text-white">Your powerpoint file</p>
-            <Upload
-              type="tel"
-              placeholder={"Phone Number"}
-              onChange={onPhoneChange}
-            >
+            <Upload onChange={handlePowerpointChange}>
               <Button
                 className="bg-golden sm:w-1/3 w-full rounded-full"
                 icon={<UploadOutlined />}
@@ -777,18 +769,14 @@ export const RegistrationForm = () => {
           </div>
           <div>
             <p className="text-white">Your video file</p>
-            <Upload
-              type="tel"
-              placeholder={"Phone Number"}
-              onChange={onPhoneChange}
-            >
-              <Button
-                className="bg-golden sm:w-1/3 w-full rounded-full"
-                icon={<UploadOutlined />}
-              >
-                Select File
-              </Button>
-            </Upload>
+            <input
+              className="bg-golden sm:w-1/3 w-full rounded-full"
+              type="file"
+              id="video"
+              name="video"
+              accept="video/*"
+              onChange={handleVideoChange}
+            />
           </div>
           <br />
           <br />

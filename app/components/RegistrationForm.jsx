@@ -396,7 +396,7 @@ const formItemLayoutWithOutLabel = {
 const { TextArea } = Input;
 
 export const RegistrationForm = () => {
-  const launchDate = new Date("2023-10-10T00:59:00Z"); // Replace with actual launch date
+  const launchDate = new Date("2023-10-10T00:59:00Z");
 
   const calculateTimeLeft = () => {
     const now = new Date();

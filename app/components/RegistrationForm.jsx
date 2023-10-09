@@ -396,7 +396,7 @@ const formItemLayoutWithOutLabel = {
 const { TextArea } = Input;
 
 export const RegistrationForm = () => {
-  const launchDate = new Date("2023-10-09T13:59:00Z"); // Replace with actual launch date
+  const launchDate = new Date("2023-10-10T00:59:00Z"); // Replace with actual launch date
 
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -419,6 +419,7 @@ export const RegistrationForm = () => {
   const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft());
   const [showForm, setShowForm] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(false);
+  const [successful, setSuccessful] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
     state: "",
@@ -487,7 +488,7 @@ export const RegistrationForm = () => {
     const file = e.target.files[0];
     setFormData({
       ...formData,
-      photo: file,
+      letter: file,
     });
   };
 
@@ -495,7 +496,7 @@ export const RegistrationForm = () => {
     const file = e.target.files[0];
     setFormData({
       ...formData,
-      photo: file,
+      powerpoint: file,
     });
   };
 
@@ -503,8 +504,14 @@ export const RegistrationForm = () => {
     const file = e.target.files[0];
     setFormData({
       ...formData,
-      photo: file,
+      video: file,
     });
+  };
+
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
   };
 
   const onFinish = async (values) => {
@@ -516,9 +523,13 @@ export const RegistrationForm = () => {
     try {
       const response = await axios.post(
         "https://proxie-backend.onrender.com/api/v1/hackathons/",
-        formData
+        formData,
+        config
       );
       console.log(response);
+      if (response.response.status === 200) {
+        setSuccessful(true);
+      }
     } catch (error) {
       console.log(error, "caught error");
       setErrorMessage(error.message);
@@ -800,8 +811,14 @@ export const RegistrationForm = () => {
           >
             Submit
           </Button>
-          {errorMessage && (
+          {errorMessage ? (
             <p className="text-red-500 font-bold">{errorMessage}</p>
+          ) : successful ? (
+            <p className="text-green-500 font-bold">
+              You have successfully registered
+            </p>
+          ) : (
+            <p></p>
           )}
         </Form>
       ) : (

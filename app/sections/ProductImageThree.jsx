@@ -136,7 +136,7 @@ const ProductImageThree = () => {
                   Step 5 -{" "}
                 </span>
                 Create a 2-minute video describing your proposed solution,
-                citing it's importance to the society.
+                citing it&apos;s importance to the society.
               </li>
               <br />
               <h1 className="sm:text-4xl text-xl text-center mb-4 text-golden">

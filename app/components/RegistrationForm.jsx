@@ -541,7 +541,7 @@ export const RegistrationForm = () => {
 
   return (
     <div className="w-full">
-      {showForm === false ? (
+      {showForm ? (
         <Form
           size="large"
           className="w-full space-y-4"
@@ -758,14 +758,14 @@ export const RegistrationForm = () => {
           </div>
           <div>
             <p className="text-white">Your powerpoint file</p>
-            <Upload onChange={handlePowerpointChange}>
-              <Button
-                className="bg-golden sm:w-1/3 w-full rounded-full"
-                icon={<UploadOutlined />}
-              >
-                Select File
-              </Button>
-            </Upload>
+            <input
+              className="bg-golden sm:w-1/3 w-full rounded-full"
+              type="file"
+              id="powerpoint"
+              name="powerpoint"
+              accept=".pptx, .docx"
+              onChange={handlePowerpointChange}
+            />
           </div>
           <div>
             <p className="text-white">Your video file</p>

@@ -874,8 +874,8 @@ export const RegistrationForm = () => {
             >
               <Result
                 status="success"
-                title="You have successfully registered"
-                subTitle={`A confirmation email has been sent to ${formData.email}. Yo do not have to reply to the email.`}
+                title="Registration Successful"
+                subTitle={`A confirmation email has been sent to ${formData.email}. You do not have to reply to the email.`}
                 extra={[
                   <Button
                     onClick={handleSuccessfulCancel}
@@ -900,7 +900,7 @@ export const RegistrationForm = () => {
             >
               <Result
                 status="warning"
-                title="Registration Failed"
+                title="Oops!"
                 subTitle={`A sci-tech23 hackathon team with this team tag "${formData.team_tag}" already exists`}
                 extra={[
                   <Button
@@ -926,7 +926,7 @@ export const RegistrationForm = () => {
             >
               <Result
                 status="error"
-                title="Fatal Error"
+                title="Registration Failed!"
                 subTitle={`Your submission request failed. Please wait a while and try again!`}
                 extra={[
                   <Button

@@ -1,10 +1,15 @@
 import React from "react";
-import { Form, Cascader, Input, Button, Select, Divider, Upload } from "antd";
 import {
-  MinusCircleOutlined,
-  PlusOutlined,
-  UploadOutlined,
-} from "@ant-design/icons";
+  Form,
+  Cascader,
+  Input,
+  Button,
+  Select,
+  Divider,
+  Result,
+  Modal,
+} from "antd";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 const sectorOptions = [
@@ -407,10 +412,13 @@ export const RegistrationForm = () => {
     }
 
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
     const hours = Math.floor(
       (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
+
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
     return { days, hours, minutes, seconds };
@@ -419,6 +427,7 @@ export const RegistrationForm = () => {
   const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft());
   const [showForm, setShowForm] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(false);
+  const [formErrorMessage, setFormErrorMessage] = React.useState(false);
   const [successful, setSuccessful] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
@@ -438,6 +447,37 @@ export const RegistrationForm = () => {
     powerpoint: null,
     video: null,
   });
+  const [isSuccessfulModalOpen, setIsSuccessfulModalOpen] =
+    React.useState(false);
+  const [isFormErrorModalOpen, setIsFormErrorModalOpen] = React.useState(false);
+  const [isErrorModalOpen, setIsErrorModalOpen] = React.useState(false);
+
+  const showSuccessfulModal = () => {
+    setIsSuccessfulModalOpen(true);
+  };
+
+  const handleSuccessfulCancel = () => {
+    setIsSuccessfulModalOpen(false);
+    setSuccessful(false);
+  };
+
+  const showFormErrorModal = () => {
+    setIsFormErrorModalOpen(true);
+  };
+
+  const handleFormErrorCancel = () => {
+    setIsFormErrorModalOpen(false);
+    setSuccessful(false);
+  };
+
+  const showErrorModal = () => {
+    setIsErrorModalOpen(true);
+  };
+
+  const handleErrorCancel = () => {
+    setIsErrorModalOpen(false);
+    setSuccessful(false);
+  };
 
   const onSchoolSelect = (value) => {
     setFormData((prev) => {
@@ -462,16 +502,19 @@ export const RegistrationForm = () => {
       return { ...prev, team_tag: event.target.value };
     });
   };
+
   const onWhyChange = (event) => {
     setFormData((prev) => {
       return { ...prev, prize_money_intent: event.target.value };
     });
   };
+
   const onEmailChange = (event) => {
     setFormData((prev) => {
       return { ...prev, email: event.target.value };
     });
   };
+
   const onPhoneChange = (event) => {
     setFormData((prev) => {
       return { ...prev, phone: event.target.value };
@@ -520,17 +563,23 @@ export const RegistrationForm = () => {
     setFormData((prev) => {
       return { ...prev, team_members: team };
     });
+
     try {
       const response = await axios.post(
         "https://proxie-backend.onrender.com/api/v1/hackathons/",
         formData,
         config
       );
+
       if (response.data.email) {
         setSuccessful(true);
+        showSuccessfulModal();
       }
     } catch (error) {
       setErrorMessage(error.message);
+      error.response.data.team_tag[0] && showFormErrorModal();
+      setFormErrorMessage(error.response.data.team_tag[0]);
+      error.response.status === 500 && showErrorModal();
     } finally {
       setLoading(false);
     }
@@ -740,6 +789,7 @@ export const RegistrationForm = () => {
               How will the prize money improve your solution?
             </p>
             <TextArea
+              required
               className="text-white"
               showCount
               placeholder={
@@ -753,6 +803,7 @@ export const RegistrationForm = () => {
           <div>
             <p className="text-white">Your email address</p>
             <Input
+              required
               type="email"
               placeholder={"Email address"}
               onChange={onEmailChange}
@@ -761,6 +812,8 @@ export const RegistrationForm = () => {
           <div>
             <p className="text-white">Your phone number</p>
             <Input
+              min={999999999}
+              required
               type="tel"
               placeholder={"Phone Number"}
               onChange={onPhoneChange}
@@ -769,6 +822,7 @@ export const RegistrationForm = () => {
           <div>
             <p className="text-white">Your endorsement letter</p>
             <input
+              required
               className="bg-golden sm:w-1/3 w-full rounded-full"
               type="file"
               id="letter"
@@ -781,6 +835,7 @@ export const RegistrationForm = () => {
             <p className="text-white">Your powerpoint file</p>
             <input
               className="bg-golden sm:w-1/3 w-full rounded-full"
+              required
               type="file"
               id="powerpoint"
               name="powerpoint"
@@ -792,6 +847,7 @@ export const RegistrationForm = () => {
             <p className="text-white">Your video file</p>
             <input
               className="bg-golden sm:w-1/3 w-full rounded-full"
+              required
               type="file"
               id="video"
               name="video"
@@ -810,9 +866,80 @@ export const RegistrationForm = () => {
             Submit
           </Button>
           {successful ? (
-            <p className="text-green-500 font-bold">
-              You have successfully registered
-            </p>
+            <Modal
+              title="SCI-TECH23"
+              open={isSuccessfulModalOpen}
+              onCancel={handleSuccessfulCancel}
+              footer={null}
+            >
+              <Result
+                status="success"
+                title="You have successfully registered"
+                subTitle={`A confirmation email has been sent to ${formData.email}. Yo do not have to reply to the email.`}
+                extra={[
+                  <Button
+                    onClick={handleSuccessfulCancel}
+                    type="default"
+                    className="bg-green-600 text-white border-none"
+                    key="okay"
+                  >
+                    Got it!
+                  </Button>,
+                ]}
+              />
+            </Modal>
+          ) : (
+            <p></p>
+          )}
+          {formErrorMessage ? (
+            <Modal
+              title="SCI-TECH23"
+              open={isFormErrorModalOpen}
+              onCancel={handleFormErrorCancel}
+              footer={null}
+            >
+              <Result
+                status="warning"
+                title="Registration Failed"
+                subTitle={`A sci-tech23 hackathon team with this team tag "${formData.team_tag}" already exists`}
+                extra={[
+                  <Button
+                    onClick={handleFormErrorCancel}
+                    type="default"
+                    className="bg-golden border-none text-white"
+                    key="okay"
+                  >
+                    Change team tag
+                  </Button>,
+                ]}
+              />
+            </Modal>
+          ) : (
+            <p></p>
+          )}
+          {errorMessage ? (
+            <Modal
+              title="SCI-TECH23"
+              open={isErrorModalOpen}
+              onCancel={handleErrorCancel}
+              footer={null}
+            >
+              <Result
+                status="error"
+                title="Fatal Error"
+                subTitle={`Your submission request failed. Please wait a while and try again!`}
+                extra={[
+                  <Button
+                    onClick={handleErrorCancel}
+                    type="default"
+                    className="bg-red-500 border-none text-white"
+                    key="okay"
+                  >
+                    Dismiss
+                  </Button>,
+                ]}
+              />
+            </Modal>
           ) : (
             <p></p>
           )}

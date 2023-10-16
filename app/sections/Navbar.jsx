@@ -2,18 +2,13 @@
 
 import Image from "next/image";
 import { content } from "../data/content";
-
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { StoreContext } from "../context/Store";
 import Link from "next/link";
 
 const Navbar = () => {
   const { toggleSideMenu } = useContext(StoreContext);
   const { navBar } = content;
-
-  useEffect(() => {
-    window.location.href = "https://hackathonamihub.netlify.app";
-  }, []);
 
   // styles
   const hover = `cursor-pointer hover:text-slate-300 transition-all duration-300 ease-in-out`;

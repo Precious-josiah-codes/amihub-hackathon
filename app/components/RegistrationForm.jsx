@@ -661,7 +661,7 @@ export const RegistrationForm = () => {
               onChange={onTeamTagChange}
             />
           </div>
-          <div>
+          {/* <div>
             <p className="text-white">
               Names of team members, departments, and matric number
             </p>
@@ -774,7 +774,7 @@ export const RegistrationForm = () => {
                 </>
               )}
             </Form.List>
-          </div>
+          </div> */}
           <div>
             <p className="text-white">Sector</p>
             <Select
@@ -820,7 +820,7 @@ export const RegistrationForm = () => {
             />
           </div>
           <div>
-            <p className="text-white">Your endorsement letter</p>
+            <p className="text-white">Team school IDs</p>
             <input
               required
               className="bg-golden sm:w-1/3 w-full rounded-full"

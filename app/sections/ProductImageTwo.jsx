@@ -23,26 +23,28 @@ const ProductImageTwo = () => {
                 <span className="font-bold text-left text-golden">
                   Phase 1 -{" "}
                 </span>
-                Teams from various tertiary institutions in the South-South
-                region of Nigeria will apply for the SCI-TECH Hackathon 2023.
-                Their applications will be screened by experts and the top teams
-                will be selected for the next stage.
+                Individuals and Teams from various tertiary institutions in the
+                South-South region of Nigeria will apply for the SCI-TECH
+                Hackathon 2023. Their applications will be screened by experts
+                and the top participants will be selected for the next stage.
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
                   Phase 2 -{" "}
                 </span>
-                The top selected teams will be invited to present their project/
-                ideas in person, where experts will assess and review their
-                presentations based on set criteria of innovation and viability.
+                The top selected individuals and/or teams will be invited to
+                present their project in person, where experts will assess and
+                review their presentations based on set criteria of innovation
+                and viability.
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
                   Phase 3 -{" "}
                 </span>
-                Selected teams will come to the finals with their projects
-                having gone through mentorship and advisory processes. The
-                winners will be identified and announced by the panel of judges.
+                Selected individuals and/or teams will come to the finals with
+                their projects having gone through mentorship and advisory
+                processes. The winners will be identified and announced by the
+                panel of judges.
               </li>
             </ul>
             <br />
@@ -57,8 +59,8 @@ const ProductImageTwo = () => {
               </span>{" "}
               can apply for this{" "}
               <span className="text-golden">SCITECH23 Hackathon</span>.
-              Individual team members are encouraged to follow and like AMIHub
-              on all her social media platforms.
+              Application can be done as an individual or as a team of not more
+              than 4 persons.
             </p>
             <hr className="mt-5" />
           </div>

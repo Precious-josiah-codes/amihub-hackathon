@@ -784,7 +784,7 @@ export const RegistrationForm = () => {
               onSelect={onSectorChange}
             />
           </div>
-          <div>
+          {/* <div>
             <p className="text-white">
               How will the prize money improve your solution?
             </p>
@@ -792,14 +792,12 @@ export const RegistrationForm = () => {
               required
               className="text-white"
               showCount
-              placeholder={
-                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam, nesciunt neque. Molestiae officia beatae voluptate ea vel!"
-              }
+              placeholder={"Not more than 300 characters"}
               rows={5}
               maxLength={300}
               onChange={onWhyChange}
             />
-          </div>
+          </div> */}
           <div>
             <p className="text-white">Your email address</p>
             <Input

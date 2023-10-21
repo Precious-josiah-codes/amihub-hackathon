@@ -7,6 +7,7 @@ import {
   Select,
   Divider,
   Result,
+  Radio,
   Modal,
 } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
@@ -457,21 +458,22 @@ export const RegistrationForm = () => {
   const [successful, setSuccessful] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
+    team_members: [],
+    video: null,
+    letter: null,
+    powerpoint: null,
     state: "",
     school: "",
+    sector: "",
+    team_tag: "",
+    prize_money_intent: "",
+    email: "",
+    phone: "",
+    student: true,
     other: {
       lga: null,
       school: null,
     },
-    team_tag: "",
-    team_members: [],
-    sector: "",
-    prize_money_intent: "",
-    email: "",
-    phone: "",
-    letter: null,
-    powerpoint: null,
-    video: null,
   });
   const [isSuccessfulModalOpen, setIsSuccessfulModalOpen] =
     React.useState(false);
@@ -526,6 +528,12 @@ export const RegistrationForm = () => {
   const onTeamTagChange = (event) => {
     setFormData((prev) => {
       return { ...prev, team_tag: event.target.value };
+    });
+  };
+
+  const onStudentChange = (event) => {
+    setFormData((prev) => {
+      return { ...prev, student: event.target.value };
     });
   };
 
@@ -683,8 +691,8 @@ export const RegistrationForm = () => {
           onFinish={onFinish}
         >
           <div>
-            <p className="text-white">Select your School</p>
-            <Cascader
+            <p className="text-white">Are you a student?</p>
+            {/* <Cascader
               allowClear={true}
               showSearch
               dropdownMenuColumnStyle={{ padding: 10 }}
@@ -703,15 +711,26 @@ export const RegistrationForm = () => {
               options={schoolOptions}
               onChange={onSchoolSelect}
               changeOnSelect
-            />
+            /> */}
+            <Radio.Group onChange={onStudentChange} value={formData.student}>
+              <Radio className="text-white" value={true}>
+                Yes
+              </Radio>
+              <Radio className="text-white" value={false}>
+                No
+              </Radio>
+            </Radio.Group>
           </div>
           <div>
-            <p className="text-white">If you chose &quot;Other&quot;</p>
+            <p className="text-white">State and LGA</p>
             <Input
               placeholder={"Name of your State & LGA"}
               onChange={onOtherSchoolLga}
               className="mb-1"
             />
+          </div>
+          <div>
+            <p className="text-white">School you attended</p>
             <Input
               placeholder={"Name of your university"}
               onChange={onOtherSchool}
@@ -882,7 +901,7 @@ export const RegistrationForm = () => {
               onChange={onPhoneChange}
             />
           </div>
-          <div>
+          {/* <div>
             <p className="text-white">Team school IDs</p>
             <input
               required
@@ -893,7 +912,7 @@ export const RegistrationForm = () => {
               accept=".docx, .pdf"
               onChange={handleLetterChange}
             />
-          </div>
+          </div> */}
           <div>
             <p className="text-white">Your powerpoint file</p>
             <input

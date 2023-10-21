@@ -403,7 +403,7 @@ const { TextArea } = Input;
 export const RegistrationForm = () => {
   const launchDate = new Date("2023-10-10T00:59:00Z");
 
-  const calculateTimeLeft = () => {
+  const calculateLaunchTime = () => {
     const now = new Date();
     const difference = launchDate - now;
 
@@ -424,7 +424,33 @@ export const RegistrationForm = () => {
     return { days, hours, minutes, seconds };
   };
 
-  const [timeLeft, setTimeLeft] = React.useState(calculateTimeLeft());
+  const endDate = new Date("2023-10-31T00:59:00Z");
+
+  const calculateEndTime = () => {
+    const now = new Date();
+    const difference = endDate - now;
+
+    if (difference < 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return { days, hours, minutes, seconds };
+  };
+
+  const [launchTimeLeft, setLaunchTimeLeft] = React.useState(
+    calculateLaunchTime()
+  );
+  const [endTimeLeft, setEndTimeLeft] = React.useState(calculateEndTime());
   const [showForm, setShowForm] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(false);
   const [formErrorMessage, setFormErrorMessage] = React.useState(false);
@@ -587,8 +613,29 @@ export const RegistrationForm = () => {
 
   React.useEffect(() => {
     const timer = setInterval(() => {
-      const timeLeft = calculateTimeLeft();
-      setTimeLeft(timeLeft);
+      const timeLeft = calculateLaunchTime();
+      setLaunchTimeLeft(timeLeft);
+
+      if (
+        timeLeft?.days === 0 &&
+        timeLeft?.hours === 0 &&
+        timeLeft?.minutes === 0 &&
+        timeLeft?.seconds === 0
+      ) {
+        clearInterval(timer);
+        setShowForm(true);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      const timeLeft = calculateEndTime();
+      setEndTimeLeft(timeLeft);
 
       if (
         timeLeft?.days === 0 &&
@@ -608,6 +655,24 @@ export const RegistrationForm = () => {
 
   return (
     <div className="w-full">
+      <div className="w-full flex flex-col items-center justify-center">
+        <h2 className="sm:text-3xl text-golden">closes in:</h2>
+        <div className="w-full flex flex-row items-center sm:gap-4 gap-1 justify-center text-white sm:font-extrabold sm:text-4xl mt-4 bg-golden sm:py-8 py-4 rounded-xl">
+          <div>
+            <span>{endTimeLeft?.days}</span> Days :
+          </div>
+          <div>
+            <span>{endTimeLeft?.hours}</span> Hrs :
+          </div>
+          <div>
+            <span>{endTimeLeft?.minutes}</span> Mins :
+          </div>
+          <div>
+            <span>{endTimeLeft?.seconds}</span> Secs
+          </div>
+        </div>
+      </div>
+      <br />
       {showForm ? (
         <Form
           size="large"
@@ -947,16 +1012,16 @@ export const RegistrationForm = () => {
           <h2 className="sm:text-3xl text-golden">opens in:</h2>
           <div className="w-full flex flex-row items-center sm:gap-4 gap-1 justify-center text-white sm:font-extrabold sm:text-4xl mt-4 bg-golden sm:py-8 py-4 rounded-xl">
             <div>
-              <span>{timeLeft?.days}</span> Days :
+              <span>{launchTimeLeft?.days}</span> Days :
             </div>
             <div>
-              <span>{timeLeft?.hours}</span> Hrs :
+              <span>{launchTimeLeft?.hours}</span> Hrs :
             </div>
             <div>
-              <span>{timeLeft?.minutes}</span> Mins :
+              <span>{launchTimeLeft?.minutes}</span> Mins :
             </div>
             <div>
-              <span>{timeLeft?.seconds}</span> Secs
+              <span>{launchTimeLeft?.seconds}</span> Secs
             </div>
           </div>
         </div>

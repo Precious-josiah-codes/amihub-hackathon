@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const ProductImage = () => {
   return (
-    <section className="flex">
+    <section className="flex mt-12">
       <div className="mx-auto flex sm:flex-row flex-col sm:space-x-6 space-y-6 sm:space-y-0 w-fit">
         {/* first image */}
         <motion.div

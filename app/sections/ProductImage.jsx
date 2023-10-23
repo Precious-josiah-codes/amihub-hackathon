@@ -21,8 +21,8 @@ const ProductImage = () => {
             </h1>
             The SCI-TECH 2023 Hackathon is an event organized by Africa
             Manufacturing Innovation Hub. The event is designed to inspire,
-            challenge, and empower students from tertiary institutions across
-            Nigeria. <br />
+            challenge, and empower students from tertiary institutions and
+            youths across Nigeria. <br />
             As a cardinal factor to our corporate vision, this SCITECH23
             Hackaton will provide opportunities for talent development,
             innovation, and networking within the technology ecosystem. Our

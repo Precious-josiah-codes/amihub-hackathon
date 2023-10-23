@@ -515,7 +515,7 @@ export const RegistrationForm = () => {
 
   const onOtherSchoolLga = (event) => {
     setFormData((prev) => {
-      return { ...prev, other: { ...prev, lga: event.target.value } };
+      return { ...prev, state: event.target.value };
     });
   };
 
@@ -597,14 +597,12 @@ export const RegistrationForm = () => {
     setFormData((prev) => {
       return { ...prev, team_members: team };
     });
-
     try {
       const response = await axios.post(
         "https://proxie-backend.onrender.com/api/v1/hackathons/",
         formData,
         config
       );
-
       if (response.data.email) {
         setSuccessful(true);
         showSuccessfulModal();
@@ -729,13 +727,13 @@ export const RegistrationForm = () => {
               className="mb-1"
             />
           </div>
-          <div>
+          {/* <div>
             <p className="text-white">School you attended</p>
             <Input
               placeholder={"Name of your university"}
               onChange={onOtherSchool}
             />
-          </div>
+          </div> */}
           <div>
             <p className="text-white">Team Tag</p>
             <Input

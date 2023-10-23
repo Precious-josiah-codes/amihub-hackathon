@@ -23,10 +23,10 @@ const ProductImageTwo = () => {
                 <span className="font-bold text-left text-golden">
                   Phase 1 -{" "}
                 </span>
-                Individuals and Teams from various tertiary institutions in the
-                South-South region of Nigeria will apply for the SCI-TECH
-                Hackathon 2023. Their applications will be screened by experts
-                and the top participants will be selected for the next stage.
+                Individuals and Teams from the South-South region of Nigeria
+                will apply for the SCI-TECH Hackathon 2023. Their applications
+                will be screened by experts and the top participants will be
+                selected for the next stage.
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
@@ -51,8 +51,8 @@ const ProductImageTwo = () => {
             <br />
             <hr className="mb-5" />
             <p className="text-center sm:text-left">
-              <span className="text-golden">NOTE: </span> Teams from all
-              tertiary institutions in{" "}
+              <span className="text-golden">NOTE: </span> Individuals & Teams
+              from all tertiary institutions in{" "}
               <span className="text-golden">
                 South-South Nigeria (Akwa-Ibom, Bayelsa, Cross-River, Delta,
                 Edo, Rivers)

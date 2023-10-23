@@ -21,14 +21,14 @@ const ProductImageThree = () => {
               How To Register
             </h1>
             <ul className="list-disc space-y-4 sm:w-2/3 w-full">
-              <li>
+              {/* <li>
                 <span className="font-bold text-left text-golden">
                   Step 1 -{" "}
                 </span>
                 Scan each team member&apos;s valid school ID card, append to a
                 single document (Ms-Word or PDF) and upload through our
                 registration form.
-                {/* <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
+                <div className="flex space-x-4 pt-4 sm:pl-16 w-fit">
                   <a
                     href={
                       "https://docs.google.com/document/d/15Q1UW-0vrVwyYfan1LELuTY51K1iLlOs/edit?usp=sharing&ouid=106322594108853380666&rtpof=true&sd=true"
@@ -38,17 +38,17 @@ const ProductImageThree = () => {
                   >
                     download 📂
                   </a>
-                </div> */}
-              </li>
+                </div>
+              </li> */}
               <li>
                 <span className="font-bold text-left text-golden">
-                  Step 2 -{" "}
+                  Step 1 -{" "}
                 </span>
                 Fill the registration form below and submit
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
-                  Step 3 -{" "}
+                  Step 2 -{" "}
                 </span>
                 Using the slide format provided, prepare & upload your product
                 presentation slide.
@@ -66,7 +66,7 @@ const ProductImageThree = () => {
               </li>
               <li>
                 <span className="font-bold text-left text-golden">
-                  Step 4 -{" "}
+                  Step 3 -{" "}
                 </span>
                 Create a 2-minute video describing your proposed solution,
                 citing it&apos;s importance to the society.

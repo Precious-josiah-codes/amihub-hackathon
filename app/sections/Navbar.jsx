@@ -29,31 +29,28 @@ const Navbar = () => {
 
       {/* links */}
       <ul className="capitalize space-x-14 secondary-color font-medium hidden sm:flex">
-        {navBar.links.map((links, index) =>
-          index !== 2 ? (
-            <Link key={index} href={links.link}>
-              <li className={hover}>{links.title}</li>
-            </Link>
-          ) : (
-            <>
-              <li
-                className={hover}
-                onClick={() => {
-                  const footer = document.querySelector("#footer");
-                  footer.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                {links.title}
-              </li>
-            </>
-          )
-        )}
+        {navBar.links.map((link, index) => (
+          <li
+            key={index}
+            className={hover}
+            onClick={() => {
+              const contactSection = document.getElementById("footer");
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            {/* <Link key={index} href={link.link}> */}
+            {link.title}
+            {/* </Link> */}
+          </li>
+        ))}
       </ul>
 
       {/* Pre Order btn */}
-      <button className="hidden  px-4 py-2 bg-blue-500 rounded-[5px]">
+      {/* <button className="hidden  px-4 py-2 bg-blue-500 rounded-[5px]">
         Pre Order
-      </button>
+      </button> */}
 
       {/* hamburger menu */}
       <div

@@ -25,9 +25,9 @@ const Incubated = () => {
         <div className="sm:h-[4rem] h-[5rem] sm:w-[13rem] w-[80%] rounded-[5px] relative overflow-hidden">
           <Image
             class="object-contain w-full h-full"
-            src="/ncdmb.webp"
+            src="/nnnpc.png"
             fill
-            alt="Nigerian Content Development and Monitoring Board (NCDMB) logo"
+            alt="Nigerian National Petroleum Corporation (NNPC) logo"
             priority
           />
         </div>

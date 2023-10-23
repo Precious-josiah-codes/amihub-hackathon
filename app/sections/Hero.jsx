@@ -33,7 +33,7 @@ const Hero = () => {
           animate="visible"
         >
           <Image
-            src="/hackaton.png"
+            src="/hackkk3.png"
             alt="amihub hackathon 2023 for south-south tetiary institutions"
             width={1000}
             height={1000}

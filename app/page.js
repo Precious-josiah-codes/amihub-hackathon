@@ -10,8 +10,8 @@ import ProductImageThree from "./sections/ProductImageThree";
 
 export default function Home() {
   return (
-    <main className="relative text-white h-screen overflow-x-hidden">
-      <div className="relative px-5 sm:px-[4rem] mb-9">
+    <main className="relative text-white h-screen overflow-x-hidden scroll-smooth">
+      <div className="relative px-5 sm:px-[4rem] mb-9 scroll-smooth">
         {/* start navbar */}
         <Navbar />
         {/* end navbar */}

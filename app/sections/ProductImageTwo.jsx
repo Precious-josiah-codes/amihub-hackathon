@@ -52,7 +52,7 @@ const ProductImageTwo = () => {
             <hr className="mb-5" />
             <p className="text-center sm:text-left">
               <span className="text-golden">NOTE: </span> Individuals & Teams
-              from all tertiary institutions in{" "}
+              from{" "}
               <span className="text-golden">
                 South-South Nigeria (Akwa-Ibom, Bayelsa, Cross-River, Delta,
                 Edo, Rivers)

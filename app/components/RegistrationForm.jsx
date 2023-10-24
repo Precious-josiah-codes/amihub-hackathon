@@ -924,7 +924,7 @@ export const RegistrationForm = () => {
             />
           </div>
           <div>
-            <p className="text-white">Your video file</p>
+            <p className="text-white">Your video file (Not above 100Mb)</p>
             <input
               className="bg-golden sm:w-1/3 w-full rounded-full"
               required

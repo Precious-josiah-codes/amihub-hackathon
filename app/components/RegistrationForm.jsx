@@ -596,6 +596,7 @@ export const RegistrationForm = () => {
         (progressEvent.loaded / progressEvent.total) * 100;
       setProgressBarValue(percentCompleted);
     },
+    timeout: 0,
   };
 
   const onFinish = async (values) => {

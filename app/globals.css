@@ -33,3 +33,15 @@
   pointer-events: none;
   color: white;
 }
+
+:where(.css-dev-only-do-not-override-1ck3jst).ant-progress .ant-progress-text {
+  display: inline-block;
+  width: 2em;
+  margin-inline-start: 8px;
+  color: white;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: start;
+  vertical-align: middle;
+  word-break: normal;
+}

@@ -9,6 +9,7 @@ import {
   Result,
   Radio,
   Modal,
+  Progress,
 } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
@@ -457,6 +458,7 @@ export const RegistrationForm = () => {
   const [formErrorMessage, setFormErrorMessage] = React.useState(false);
   const [successful, setSuccessful] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [progressBarValue, setProgressBarValue] = React.useState(false);
   const [formData, setFormData] = React.useState({
     team_members: [],
     video: null,
@@ -589,6 +591,11 @@ export const RegistrationForm = () => {
     headers: {
       "Content-Type": "multipart/form-data",
     },
+    onUploadProgress: (progressEvent) => {
+      const percentCompleted =
+        (progressEvent.loaded / progressEvent.total) * 100;
+      setProgressBarValue(percentCompleted);
+    },
   };
 
   const onFinish = async (values) => {
@@ -598,6 +605,15 @@ export const RegistrationForm = () => {
       return { ...prev, team_members: team };
     });
     try {
+      // const response2 = await axios.post("your-upload-endpoint", formData, {
+      //   onUploadProgress: (progressEvent) => {
+      //     if (progressEvent.lengthComputable) {
+      //       const percentCompleted =
+      //         (progressEvent.loaded / progressEvent.total) * 100;
+      //       setProgressBarValue(percentCompleted);
+      //     }
+      //   },
+      // });
       const response = await axios.post(
         "https://proxie-backend.onrender.com/api/v1/hackathons/",
         formData,
@@ -934,6 +950,11 @@ export const RegistrationForm = () => {
               accept="video/*"
               onChange={handleVideoChange}
             />
+            <Progress
+              percent={progressBarValue}
+              status={progressBarValue < 100 ? "active" : "success"}
+            />
+            <p className="text-white">Video upload progress</p>
           </div>
           <br />
           <br />

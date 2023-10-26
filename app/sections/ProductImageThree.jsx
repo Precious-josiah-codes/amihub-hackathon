@@ -76,8 +76,17 @@ const ProductImageThree = () => {
                 Registration Form
               </h1>
             </ul>
-            <div className="w-full">
-              <RegistrationForm />
+            <div className="w-full pt-4 flex flex-row items-center justify-center">
+              {/* <RegistrationForm /> */}
+              <Link
+                className="bg-golden text-white w-full rounded-full sm:w-1/3 py-2 text-center"
+                target={"_blank"}
+                href={
+                  "https://docs.google.com/forms/d/e/1FAIpQLSdMybWcosx8SqJSqQWVEYFtzbRJ1cpOgmhbjB-cZ0DGoJMahw/viewform?usp=sf_link"
+                }
+              >
+                Click here to register
+              </Link>
             </div>
             <br />
             <br />

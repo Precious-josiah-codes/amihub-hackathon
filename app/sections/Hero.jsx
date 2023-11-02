@@ -3,12 +3,13 @@ import Image from "next/image";
 import { content } from "../data/content";
 import { motion } from "framer-motion";
 import { animationOne, animationThree, animationTwo } from "../animation";
+import Link from "next/link";
 
 const Hero = () => {
   const { hero } = content;
 
   return (
-    <section class="flex flex-col items-center justify-center sm:min-h-screen h-[85vh]">
+    <section class="flex flex-col items-center justify-center sm:min-h-[120vh] h-[85vh]">
       {/* start hero text */}
       <div class="container mx-auto flex sm:px-5 pt-[10rem] pb-[3.5rem] items-center justify-center flex-col sm:w-2/3 text-center">
         <div className="absolute inset-0 top-[15rem] mx-auto sm:w-[25rem] ] w-[20rem] ">
@@ -73,6 +74,22 @@ const Hero = () => {
             {hero.subTextTwo}
           </motion.span>
         </motion.p>
+
+        <div className="w-[20rem] pt-4 items-center justify-center z-[999]">
+          <h1>Portal closes on 4th November 2023</h1>
+          {/* <RegistrationForm /> */}
+          <Link
+            className="cursor-pointer"
+            target={"_blank"}
+            href={
+              "https://docs.google.com/forms/d/e/1FAIpQLSdMybWcosx8SqJSqQWVEYFtzbRJ1cpOgmhbjB-cZ0DGoJMahw/viewform?usp=sf_link"
+            }
+          >
+            <div className=" bg-golden text-white w-full rounded-full  py-2 text-center mt-3">
+              Click here to register
+            </div>
+          </Link>
+        </div>
       </div>
       {/* end hero text */}
     </section>

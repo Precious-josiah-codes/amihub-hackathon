@@ -76,7 +76,10 @@ const Hero = () => {
         </motion.p>
 
         <div className="w-[20rem] pt-4 items-center justify-center z-[999]">
-          <h1>Registration Portal closes on 15th November 2023</h1>
+          <h1>
+            Registration Portal closes on Wednesday 15th of November 2023 by
+            12pm
+          </h1>
           {/* <RegistrationForm /> */}
           <Link
             className="cursor-pointer"

@@ -76,11 +76,11 @@ const Hero = () => {
         </motion.p>
 
         <div className="w-[20rem] pt-4 items-center justify-center z-[999]">
-          {/* <h1>
+          <h1>
             Registration Closed
-          </h1> */}
+          </h1>
           {/* <RegistrationForm /> */}
-          <Link
+          {/* <Link
             className="cursor-pointer"
             target={"_blank"}
             href={
@@ -92,7 +92,7 @@ const Hero = () => {
             </div>
           </Link>
         </div>
-      </div>
+      </div> */}
       {/* end hero text */}
     </section>
   );

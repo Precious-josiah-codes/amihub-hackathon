@@ -76,9 +76,7 @@ const Hero = () => {
         </motion.p>
 
         <div className="w-[20rem] pt-4 items-center justify-center z-[999]">
-          <h1>
-            Registration Closed
-          </h1>
+          <h1>Registration Closed</h1>
           {/* <RegistrationForm /> */}
           {/* <Link
             className="cursor-pointer"
@@ -90,9 +88,9 @@ const Hero = () => {
             <div className=" bg-golden text-white w-full rounded-full  py-2 text-center mt-3">
               Click here to register
             </div>
-          </Link>
+          </Link> */}
         </div>
-      </div> */}
+      </div>
       {/* end hero text */}
     </section>
   );
